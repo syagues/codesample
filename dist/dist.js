@@ -1046,6 +1046,7 @@
   var import_prismjs = __toESM(require_prism());
   var code = `const data = 'example'`;
   var html = import_prismjs.default.highlight(code, import_prismjs.default.languages.javascript, "javascript");
+  console.log(html);
 })();
 /*! Bundled license information:
 
