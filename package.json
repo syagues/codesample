@@ -1,0 +1,24 @@
+{
+  "name": "codesample",
+  "version": "0.0.1",
+  "description": "code sample generator",
+  "main": "index.js",
+  "scripts": {
+    "build": "esbuild src/index.js --bundle --outfile=dist/dist.js",
+    "test": "vitest test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/syagues/codesample.git"
+  },
+  "author": "Sergi Yagües",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/syagues/codesample/issues"
+  },
+  "homepage": "https://github.com/syagues/codesample#readme",
+  "devDependencies": {
+    "esbuild": "^0.16.12",
+    "prismjs": "^1.29.0"
+  }
+}
