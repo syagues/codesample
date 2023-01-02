@@ -26,6 +26,12 @@ const codeSample = new CodeSample(options)
 
 This will generate a dom element (or string) with the proper content.
 
+```javascript
+codeSample.attachToElement('.selector')
+
+const html = codeSample.getHtml()
+```
+
 If it only has one sample, it will display just the sample in a minimal
 way. When it has more than one, will display a navbar to switch between
 samples.
