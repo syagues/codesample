@@ -52,7 +52,7 @@ await codeSample.removeSample('python')
 It will also have some methods to interact with code. e.g:
 
 ```javascript
-await codeSample.highlightBlock('sample', [31,46])
+codeSample.highlightBlock('sample', [31,46])
 ```
 This method will scroll and highlight only the lines sent in the
 second parameter.
