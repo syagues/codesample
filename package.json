@@ -2,10 +2,11 @@
   "name": "codesample",
   "version": "0.0.1",
   "description": "code sample generator",
-  "main": "index.js",
+  "main": "dist/dist.js",
   "scripts": {
-    "build": "esbuild src/index.js --bundle --outfile=dist/dist.js",
-    "test": "vitest test"
+    "build": "esbuild src/index.ts --bundle --outfile=dist/dist.js",
+    "test": "vitest test",
+    "test:coverage": "vitest run --coverage"
   },
   "repository": {
     "type": "git",
@@ -19,6 +20,9 @@
   "homepage": "https://github.com/syagues/codesample#readme",
   "devDependencies": {
     "esbuild": "^0.16.12",
+    "vitest": "^0.26.3"
+  },
+  "dependencies": {
     "prismjs": "^1.29.0"
   }
 }
