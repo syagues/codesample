@@ -52,7 +52,7 @@ await codeSample.removeSample('python')
 It will also have some methods to interact with code. e.g:
 
 ```javascript
-codeSample.highlightBlock('sample', [31,46])
+await codeSample.highlightBlock('sample', [31,46])
 ```
 This method will scroll and highlight only the lines sent in the
 second parameter.
@@ -63,6 +63,6 @@ await codeSample.goToBlock('sample', [31,46])
 This method will navigate and scroll to the lines sent in the second parameter.
 
 ```javascript
-await codeSample.navigateTo('sample')
+await codeSample.navigateToSample('sample')
 ```
 This method will navigate to the sample sent.
