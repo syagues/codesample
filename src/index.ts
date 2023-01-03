@@ -6,13 +6,24 @@ const html = Prism.highlight(code, Prism.languages.javascript, 'javascript');
 
 console.log(html) */
 
+type sample = {
+  fileName?: string,  
+  language: string,
+  content: string
+}
+
+type samples = {
+  [key: string]: sample;
+}
+
+
 export class CodeSample {
   theme: string
-  samples: object
+  samples: samples
 
-  constructor({theme, samples}) {
-    this.theme = theme
-    this.samples = samples
+  constructor(options) {
+    this.theme = options.theme || 'nord'
+    this.samples = options.samples || {}
   }
 
   /**
@@ -37,8 +48,12 @@ export class CodeSample {
    * @param sampleKey string
    * @param options object
    */
-  addSample(sampleKey: string, options: object) {
+  addSample(sampleKey: string, options: sample) {
+    if (this.samples[sampleKey]) throw new Error(`Key [${sampleKey}] already existing`)
+    if (!options.language) throw new Error('Language not defined')
+    if (!options.content) throw new Error('Content not defined')
 
+    this.samples[sampleKey] = options
   }
 
   /**
@@ -46,7 +61,9 @@ export class CodeSample {
    * @param sampleKey string
    */
   removeSample(sampleKey: string) {
+    if (!this.samples[sampleKey]) throw new Error(`Key [${sampleKey}] not existing`)
 
+    delete this.samples[sampleKey]
   }
 
   /**
