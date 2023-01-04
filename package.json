@@ -2,11 +2,14 @@
   "name": "codesample",
   "version": "0.0.1",
   "description": "code sample generator",
-  "main": "dist/dist.js",
+  "main": "./src/index.ts",
+  "exports": "./dist/dist.js",
   "scripts": {
-    "build": "esbuild src/index.ts --bundle --outfile=dist/dist.js",
+    "build": "esbuild src/index.ts --bundle --format=esm --outfile=dist/dist.js",
     "test": "vitest test",
-    "test:coverage": "vitest run --coverage"
+    "test:coverage": "vitest run --coverage",
+    "e2e:build": "esbuild e2e/public/src/app.ts --bundle --outfile=e2e/public/dist/dist.js",
+    "e2e:serve": "http-server e2e/public"
   },
   "repository": {
     "type": "git",
@@ -21,6 +24,7 @@
   "devDependencies": {
     "@vitest/coverage-c8": "^0.26.3",
     "esbuild": "^0.16.12",
+    "http-server": "^14.1.1",
     "vitest": "^0.26.3"
   },
   "dependencies": {
