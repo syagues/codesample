@@ -1,21 +1,4 @@
-/* import Prism from 'prismjs'
-
-const code = `const data = 'example'`
-
-const html = Prism.highlight(code, Prism.languages.javascript, 'javascript');
-
-console.log(html) */
-
-type sample = {
-  fileName?: string,  
-  language: string,
-  content: string
-}
-
-type samples = {
-  [key: string]: sample;
-}
-
+import { generateHtmls } from './generator'
 
 export class CodeSample {
   theme: string
@@ -32,7 +15,9 @@ export class CodeSample {
    * @param selector String
    */
   attachToElement(selector: string) {
-
+    const $element: Element | null = document.querySelector(selector)
+    if (!$element) throw new Error(`selector ${selector} is not in the DOM`)
+    $element.innerHTML = this.getHtml()
   }
 
   /**
@@ -40,7 +25,7 @@ export class CodeSample {
    * @returns String
    */
   getHtml() {
-
+    return generateHtmls(this)
   }
 
   /**
@@ -73,7 +58,7 @@ export class CodeSample {
    * @param location Array<number>
    */
   highlightBlock(sampleKey: string, location: Array<number>) {
-
+    return Promise.resolve()
   }
 
   /**
@@ -82,6 +67,7 @@ export class CodeSample {
    * @param location Array<number>
    */
   goToBlock(sampleKey: string, location: Array<number>) {
+    return Promise.resolve()
   }
 
   /**
@@ -89,6 +75,6 @@ export class CodeSample {
    * @param sampleKey string
    */
   navigateToSample(sampleKey: string) {
-
+    return Promise.resolve()
   }
 }
