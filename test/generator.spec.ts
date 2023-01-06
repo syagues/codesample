@@ -1,6 +1,7 @@
 import { expect, test } from 'vitest'
 import { CodeSample } from '../src/index'
 import { generateHtmls } from '../src/generator'
+import jsContent from './samplesContent/javascript'
 
 test('generateHtml :: generate sample HTML', () => {
   const options = {
@@ -10,12 +11,13 @@ test('generateHtml :: generate sample HTML', () => {
       sample: {
         language: 'javascript',
         fileName: 'sample.js', // optional
-        content: `const foo = 'bar'`
+        content: jsContent
       }
     }
   }
   
   const codeSample = new CodeSample(options)
+  const html: string = generateHtmls(codeSample)
   
-  expect(generateHtmls(codeSample)).toMatchSnapshot()
+  expect(html).toMatchSnapshot()
 })
