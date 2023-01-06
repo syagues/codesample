@@ -1,4 +1,5 @@
 import { generateHtmls } from './generator'
+import { setup } from './formatter'
 
 export class CodeSample {
   theme: string
@@ -7,6 +8,8 @@ export class CodeSample {
   constructor(options) {
     this.theme = options.theme || 'nord'
     this.samples = options.samples || {}
+    
+    setup() // Sets up the formatter
   }
 
   /**
