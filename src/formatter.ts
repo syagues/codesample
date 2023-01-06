@@ -1,16 +1,11 @@
-import Prism from 'prismjs'
+import shiki from 'shiki'
 
-export const setup = () => {
-  Prism.hooks.add('before-highlight', (env) => {
-    addLineNumbers(env.grammar);
-  });
+export const format = async (content: string, language: string) => {
+  const highlighter = await shiki.getHighlighter({})
+  return highlighter.codeToHtml(content, { lang: language })  
 }
 
-export const format = (content: string, language: string) => {
-  return Prism.highlight(content, Prism.languages[language], language);
-}
-
-const addLineNumbers = (grammar) => {
-  console.log(grammar);
+const addLineNumbers = () => {
+  console.log();
   
 }

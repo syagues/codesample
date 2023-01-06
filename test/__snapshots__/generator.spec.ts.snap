@@ -1,9 +1,9 @@
 // Vitest Snapshot v1
 
 exports[`generateHtml :: generate sample HTML 1`] = `
-"<pre><code class=\\"cs-wrapper\\"><div class=\\"cs-sample\\" cs-id=\\"sample\\"><span class=\\"token comment\\">// This is a comment</span>
-<span class=\\"token keyword\\">const</span> foo <span class=\\"token operator\\">=</span> <span class=\\"token string\\">'bar'</span><span class=\\"token punctuation\\">;</span>
-<span class=\\"token keyword\\">for</span> <span class=\\"token punctuation\\">(</span><span class=\\"token keyword\\">const</span> item <span class=\\"token keyword\\">of</span> array<span class=\\"token punctuation\\">)</span> <span class=\\"token punctuation\\">{</span>
-  console<span class=\\"token punctuation\\">.</span><span class=\\"token function\\">log</span><span class=\\"token punctuation\\">(</span>item<span class=\\"token punctuation\\">)</span><span class=\\"token punctuation\\">;</span>
-<span class=\\"token punctuation\\">}</span></div></code></pre>"
+"<div class=\\"cs-wrapper\\"><div class=\\"cs-sample\\" cs-id=\\"sample\\"><pre class=\\"shiki nord\\" style=\\"background-color: #2e3440ff\\"><code><span class=\\"line\\"><span style=\\"color: #616E88\\">// This is a comment</span></span>
+<span class=\\"line\\"><span style=\\"color: #81A1C1\\">const</span><span style=\\"color: #D8DEE9FF\\"> </span><span style=\\"color: #D8DEE9\\">foo</span><span style=\\"color: #D8DEE9FF\\"> </span><span style=\\"color: #81A1C1\\">=</span><span style=\\"color: #D8DEE9FF\\"> </span><span style=\\"color: #ECEFF4\\">&#39;</span><span style=\\"color: #A3BE8C\\">bar</span><span style=\\"color: #ECEFF4\\">&#39;</span><span style=\\"color: #81A1C1\\">;</span></span>
+<span class=\\"line\\"><span style=\\"color: #81A1C1\\">for</span><span style=\\"color: #D8DEE9FF\\"> (</span><span style=\\"color: #81A1C1\\">const</span><span style=\\"color: #D8DEE9FF\\"> </span><span style=\\"color: #D8DEE9\\">item</span><span style=\\"color: #D8DEE9FF\\"> </span><span style=\\"color: #81A1C1\\">of</span><span style=\\"color: #D8DEE9FF\\"> </span><span style=\\"color: #D8DEE9\\">array</span><span style=\\"color: #D8DEE9FF\\">) </span><span style=\\"color: #ECEFF4\\">{</span></span>
+<span class=\\"line\\"><span style=\\"color: #D8DEE9FF\\">  </span><span style=\\"color: #D8DEE9\\">console</span><span style=\\"color: #ECEFF4\\">.</span><span style=\\"color: #88C0D0\\">log</span><span style=\\"color: #D8DEE9FF\\">(</span><span style=\\"color: #D8DEE9\\">item</span><span style=\\"color: #D8DEE9FF\\">)</span><span style=\\"color: #81A1C1\\">;</span></span>
+<span class=\\"line\\"><span style=\\"color: #ECEFF4\\">}</span></span></code></pre></div></div>"
 `;

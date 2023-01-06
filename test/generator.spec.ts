@@ -3,7 +3,7 @@ import { CodeSample } from '../src/index'
 import { generateHtmls } from '../src/generator'
 import jsContent from './samplesContent/javascript'
 
-test('generateHtml :: generate sample HTML', () => {
+test('generateHtml :: generate sample HTML', async () => {
   const options = {
     theme: 'nord',
     samples: {
@@ -17,7 +17,7 @@ test('generateHtml :: generate sample HTML', () => {
   }
   
   const codeSample = new CodeSample(options)
-  const html: string = generateHtmls(codeSample)
+  const html: string = await generateHtmls(codeSample)
   
   expect(html).toMatchSnapshot()
 })

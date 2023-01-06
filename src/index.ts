@@ -1,5 +1,4 @@
 import { generateHtmls } from './generator'
-import { setup } from './formatter'
 
 export class CodeSample {
   theme: string
@@ -8,8 +7,6 @@ export class CodeSample {
   constructor(options) {
     this.theme = options.theme || 'nord'
     this.samples = options.samples || {}
-    
-    setup() // Sets up the formatter
   }
 
   /**
@@ -17,17 +14,17 @@ export class CodeSample {
    * DOM selector
    * @param selector String
    */
-  attachToElement(selector: string) {
+  async attachToElement(selector: string) {
     const $element: Element | null = document.querySelector(selector)
     if (!$element) throw new Error(`selector ${selector} is not in the DOM`)
-    $element.innerHTML = this.getHtml()
+    $element.innerHTML = await this.getHtml()
   }
 
   /**
    * Gets the generated CodeSample as a String
    * @returns String
    */
-  getHtml() {
+  async getHtml() {
     return generateHtmls(this)
   }
 

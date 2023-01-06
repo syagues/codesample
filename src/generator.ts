@@ -1,18 +1,19 @@
 import { format } from './formatter'
 
-export const generateHtmls = (codeSample: CodeSample) => {
+export const generateHtmls = async (codeSample: CodeSample) => {
   let html = ''
   for (const sampleKey in codeSample.samples) {
     const sample: sample = codeSample.samples[sampleKey]
-    html += `<div class="cs-sample" cs-id="${sampleKey}">${generateSampleHtml(sample)}</div>`
+    const sampleHtml = await generateSampleHtml(sample)
+    html += `<div class="cs-sample" cs-id="${sampleKey}">${sampleHtml}</div>`
   }
 
   // Add pre-code wrapper
-  html = `<pre><code class="cs-wrapper">${html}</code></pre>`
+  html = `<div class="cs-wrapper">${html}</div>`
   return html
 }
 
-export const generateSampleHtml = (sample: sample) => {
+export const generateSampleHtml = async (sample: sample) => {
   return format(sample.content, sample.language)
 }
 
