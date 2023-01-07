@@ -66,3 +66,8 @@ This method will navigate and scroll to the lines sent in the second parameter.
 await codeSample.navigateToSample('sample')
 ```
 This method will navigate to the sample sent.
+
+# New idea
+
+It will use a custom implementation of `vscode-textmate` for the code
+sample highlight html generation. 💪
