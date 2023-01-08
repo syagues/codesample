@@ -66,3 +66,16 @@ This method will navigate and scroll to the lines sent in the second parameter.
 await codeSample.navigateToSample('sample')
 ```
 This method will navigate to the sample sent.
+
+# Todo
+
+Things to do:
+
+- [ ] Fill up all the methods
+- [ ] Different files management
+- [ ] Improve the styles with more usecases
+- [ ] Move the compilation to vite
+- [ ] Try different languages
+- [ ] Workaround usage with different themes
+- [ ] Make e2e usecase with client/server usage
+- [ ] Download the oniguruma library and try to compile it separately

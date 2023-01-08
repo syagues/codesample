@@ -1,21 +1,18 @@
-import Prism from 'prismjs'
+import { format } from './formatter'
 
-export const generateHtmls = (codeSample: CodeSample) => {
-  let html = '<div class="cs-samples">'
-  for (const sampleKey in codeSample.samples) {
-    const sample: sample = codeSample.samples[sampleKey]
-    html += generateSampleHtml(sample)
+export const generateCodeSamples = async (
+  $element: Element,
+  samples: samples
+) => {
+  const $wrapper = document.createElement('div')
+  $wrapper.classList.add('cs')
+  for (const sampleKey in samples) {
+    const $sample: Element = document.createElement('div')
+    $sample.classList.add('sample')
+    $sample.classList.add(sampleKey)
+    const sample = samples[sampleKey]
+    await format($sample, sample.content, sample.language)
+    $wrapper.appendChild($sample)
   }
-  html += '</div>'
-  return html
-}
-
-export const generateSampleHtml = (sample: sample) => {
-  const rawHtml = Prism.highlight(sample.content, Prism.languages[sample.language], sample.language);
-
-  return rawHtml
-}
-
-export const injectLineNumbers = (html: string) => {
-  return html
+  $element.appendChild($wrapper)
 }

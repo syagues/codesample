@@ -1,4 +1,5 @@
-import { generateHtmls } from './generator'
+import { generateCodeSamples } from './generator'
+import { loadTheme } from './loader'
 
 export class CodeSample {
   theme: string
@@ -7,6 +8,8 @@ export class CodeSample {
   constructor(options) {
     this.theme = options.theme || 'nord'
     this.samples = options.samples || {}
+
+    loadTheme(this.theme)
   }
 
   /**
@@ -14,18 +17,19 @@ export class CodeSample {
    * DOM selector
    * @param selector String
    */
-  attachToElement(selector: string) {
+  async attachToElement(selector: string) {
     const $element: Element | null = document.querySelector(selector)
     if (!$element) throw new Error(`selector ${selector} is not in the DOM`)
-    $element.innerHTML = this.getHtml()
+
+    await generateCodeSamples($element, this.samples)
   }
 
   /**
    * Gets the generated CodeSample as a String
    * @returns String
    */
-  getHtml() {
-    return generateHtmls(this)
+  async getHtml() {
+    return ''
   }
 
   /**
@@ -34,7 +38,8 @@ export class CodeSample {
    * @param options object
    */
   addSample(sampleKey: string, options: sample) {
-    if (this.samples[sampleKey]) throw new Error(`Key [${sampleKey}] already existing`)
+    if (this.samples[sampleKey])
+      throw new Error(`Key [${sampleKey}] already existing`)
     if (!options.language) throw new Error('Language not defined')
     if (!options.content) throw new Error('Content not defined')
 
@@ -46,7 +51,8 @@ export class CodeSample {
    * @param sampleKey string
    */
   removeSample(sampleKey: string) {
-    if (!this.samples[sampleKey]) throw new Error(`Key [${sampleKey}] not existing`)
+    if (!this.samples[sampleKey])
+      throw new Error(`Key [${sampleKey}] not existing`)
 
     delete this.samples[sampleKey]
   }
