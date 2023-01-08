@@ -6,7 +6,7 @@
   "exports": "./dist/dist.js",
   "type": "module",
   "scripts": {
-    "build": "esbuild src/lineNumbers.ts --bundle --format=esm --outfile=dist/dist.esm.js --sourcemap --loader:.wasm=binary",
+    "build": "esbuild src/index.ts --bundle --format=esm --outdir=dist --sourcemap --loader:.wasm=binary --loader:.css=text",
     "test": "vitest test",
     "test:coverage": "vitest run --coverage",
     "e2e:build": "esbuild e2e/public/src/app.ts --bundle --outfile=e2e/public/dist/dist.js --sourcemap",
@@ -27,6 +27,7 @@
     "esbuild": "0.16.12",
     "http-server": "14.1.1",
     "jsdom": "20.0.3",
+    "prettier": "^2.8.2",
     "vitest": "0.26.3"
   },
   "dependencies": {
