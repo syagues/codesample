@@ -4,11 +4,12 @@
   "description": "code sample generator",
   "main": "./src/index.ts",
   "exports": "./dist/dist.js",
+  "type": "module",
   "scripts": {
-    "build": "esbuild src/index.ts --bundle --format=esm --outfile=dist/dist.js",
+    "build": "esbuild src/lineNumbers.ts --bundle --format=esm --outfile=dist/dist.esm.js --sourcemap --loader:.wasm=binary",
     "test": "vitest test",
     "test:coverage": "vitest run --coverage",
-    "e2e:build": "esbuild e2e/public/src/app.ts --bundle --outfile=e2e/public/dist/dist.js",
+    "e2e:build": "esbuild e2e/public/src/app.ts --bundle --outfile=e2e/public/dist/dist.js --sourcemap",
     "e2e:serve": "http-server e2e/public"
   },
   "repository": {
@@ -22,10 +23,14 @@
   },
   "homepage": "https://github.com/syagues/codesample#readme",
   "devDependencies": {
-    "@vitest/coverage-c8": "^0.26.3",
-    "esbuild": "^0.16.12",
-    "http-server": "^14.1.1",
-    "jsdom": "^20.0.3",
-    "vitest": "^0.26.3"
+    "@vitest/coverage-c8": "0.26.3",
+    "esbuild": "0.16.12",
+    "http-server": "14.1.1",
+    "jsdom": "20.0.3",
+    "vitest": "0.26.3"
+  },
+  "dependencies": {
+    "vscode-oniguruma": "1.7.0",
+    "vscode-textmate": "8.0.0"
   }
 }

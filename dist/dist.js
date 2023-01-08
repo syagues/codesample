@@ -4,14 +4,7 @@ var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __getOwnPropNames = Object.getOwnPropertyNames;
 var __getProtoOf = Object.getPrototypeOf;
 var __hasOwnProp = Object.prototype.hasOwnProperty;
-var __require = /* @__PURE__ */ ((x) => typeof require !== "undefined" ? require : typeof Proxy !== "undefined" ? new Proxy(x, {
-  get: (a, b) => (typeof require !== "undefined" ? require : a)[b]
-}) : x)(function(x) {
-  if (typeof require !== "undefined")
-    return require.apply(this, arguments);
-  throw new Error('Dynamic require of "' + x + '" is not supported');
-});
-var __commonJS = (cb, mod) => function __require2() {
+var __commonJS = (cb, mod) => function __require() {
   return mod || (0, cb[__getOwnPropNames(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
 };
 var __copyProps = (to, from, except, desc) => {
@@ -27,418 +20,8 @@ var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__ge
   mod
 ));
 
-// node_modules/vscode-oniguruma/release/main.js
-var require_main = __commonJS({
-  "node_modules/vscode-oniguruma/release/main.js"(exports, module) {
-    !function(t, n) {
-      "object" == typeof exports && "object" == typeof module ? module.exports = n() : "function" == typeof define && define.amd ? define([], n) : "object" == typeof exports ? exports.onig = n() : t.onig = n();
-    }(exports, () => {
-      return t = { 770: function(t2, n2, e) {
-        "use strict";
-        var r = this && this.__importDefault || function(t3) {
-          return t3 && t3.__esModule ? t3 : { default: t3 };
-        };
-        Object.defineProperty(n2, "__esModule", { value: true }), n2.setDefaultDebugCall = n2.createOnigScanner = n2.createOnigString = n2.loadWASM = n2.OnigScanner = n2.OnigString = void 0;
-        const i = r(e(418));
-        let o = null, a = false;
-        class f {
-          static _utf8ByteLength(t3) {
-            let n3 = 0;
-            for (let e2 = 0, r2 = t3.length; e2 < r2; e2++) {
-              const i2 = t3.charCodeAt(e2);
-              let o2 = i2, a2 = false;
-              if (i2 >= 55296 && i2 <= 56319 && e2 + 1 < r2) {
-                const n4 = t3.charCodeAt(e2 + 1);
-                n4 >= 56320 && n4 <= 57343 && (o2 = 65536 + (i2 - 55296 << 10) | n4 - 56320, a2 = true);
-              }
-              n3 += o2 <= 127 ? 1 : o2 <= 2047 ? 2 : o2 <= 65535 ? 3 : 4, a2 && e2++;
-            }
-            return n3;
-          }
-          constructor(t3) {
-            const n3 = t3.length, e2 = f._utf8ByteLength(t3), r2 = e2 !== n3, i2 = r2 ? new Uint32Array(n3 + 1) : null;
-            r2 && (i2[n3] = e2);
-            const o2 = r2 ? new Uint32Array(e2 + 1) : null;
-            r2 && (o2[e2] = n3);
-            const a2 = new Uint8Array(e2);
-            let s2 = 0;
-            for (let e3 = 0; e3 < n3; e3++) {
-              const f2 = t3.charCodeAt(e3);
-              let u2 = f2, c2 = false;
-              if (f2 >= 55296 && f2 <= 56319 && e3 + 1 < n3) {
-                const n4 = t3.charCodeAt(e3 + 1);
-                n4 >= 56320 && n4 <= 57343 && (u2 = 65536 + (f2 - 55296 << 10) | n4 - 56320, c2 = true);
-              }
-              r2 && (i2[e3] = s2, c2 && (i2[e3 + 1] = s2), u2 <= 127 ? o2[s2 + 0] = e3 : u2 <= 2047 ? (o2[s2 + 0] = e3, o2[s2 + 1] = e3) : u2 <= 65535 ? (o2[s2 + 0] = e3, o2[s2 + 1] = e3, o2[s2 + 2] = e3) : (o2[s2 + 0] = e3, o2[s2 + 1] = e3, o2[s2 + 2] = e3, o2[s2 + 3] = e3)), u2 <= 127 ? a2[s2++] = u2 : u2 <= 2047 ? (a2[s2++] = 192 | (1984 & u2) >>> 6, a2[s2++] = 128 | (63 & u2) >>> 0) : u2 <= 65535 ? (a2[s2++] = 224 | (61440 & u2) >>> 12, a2[s2++] = 128 | (4032 & u2) >>> 6, a2[s2++] = 128 | (63 & u2) >>> 0) : (a2[s2++] = 240 | (1835008 & u2) >>> 18, a2[s2++] = 128 | (258048 & u2) >>> 12, a2[s2++] = 128 | (4032 & u2) >>> 6, a2[s2++] = 128 | (63 & u2) >>> 0), c2 && e3++;
-            }
-            this.utf16Length = n3, this.utf8Length = e2, this.utf16Value = t3, this.utf8Value = a2, this.utf16OffsetToUtf8 = i2, this.utf8OffsetToUtf16 = o2;
-          }
-          createString(t3) {
-            const n3 = t3._omalloc(this.utf8Length);
-            return t3.HEAPU8.set(this.utf8Value, n3), n3;
-          }
-        }
-        class s {
-          constructor(t3) {
-            if (this.id = ++s.LAST_ID, !o)
-              throw new Error("Must invoke loadWASM first.");
-            this._onigBinding = o, this.content = t3;
-            const n3 = new f(t3);
-            this.utf16Length = n3.utf16Length, this.utf8Length = n3.utf8Length, this.utf16OffsetToUtf8 = n3.utf16OffsetToUtf8, this.utf8OffsetToUtf16 = n3.utf8OffsetToUtf16, this.utf8Length < 1e4 && !s._sharedPtrInUse ? (s._sharedPtr || (s._sharedPtr = o._omalloc(1e4)), s._sharedPtrInUse = true, o.HEAPU8.set(n3.utf8Value, s._sharedPtr), this.ptr = s._sharedPtr) : this.ptr = n3.createString(o);
-          }
-          convertUtf8OffsetToUtf16(t3) {
-            return this.utf8OffsetToUtf16 ? t3 < 0 ? 0 : t3 > this.utf8Length ? this.utf16Length : this.utf8OffsetToUtf16[t3] : t3;
-          }
-          convertUtf16OffsetToUtf8(t3) {
-            return this.utf16OffsetToUtf8 ? t3 < 0 ? 0 : t3 > this.utf16Length ? this.utf8Length : this.utf16OffsetToUtf8[t3] : t3;
-          }
-          dispose() {
-            this.ptr === s._sharedPtr ? s._sharedPtrInUse = false : this._onigBinding._ofree(this.ptr);
-          }
-        }
-        n2.OnigString = s, s.LAST_ID = 0, s._sharedPtr = 0, s._sharedPtrInUse = false;
-        class u {
-          constructor(t3) {
-            if (!o)
-              throw new Error("Must invoke loadWASM first.");
-            const n3 = [], e2 = [];
-            for (let r3 = 0, i3 = t3.length; r3 < i3; r3++) {
-              const i4 = new f(t3[r3]);
-              n3[r3] = i4.createString(o), e2[r3] = i4.utf8Length;
-            }
-            const r2 = o._omalloc(4 * t3.length);
-            o.HEAPU32.set(n3, r2 / 4);
-            const i2 = o._omalloc(4 * t3.length);
-            o.HEAPU32.set(e2, i2 / 4);
-            const a2 = o._createOnigScanner(r2, i2, t3.length);
-            for (let e3 = 0, r3 = t3.length; e3 < r3; e3++)
-              o._ofree(n3[e3]);
-            o._ofree(i2), o._ofree(r2), 0 === a2 && function(t4) {
-              throw new Error(t4.UTF8ToString(t4._getLastOnigError()));
-            }(o), this._onigBinding = o, this._ptr = a2;
-          }
-          dispose() {
-            this._onigBinding._freeOnigScanner(this._ptr);
-          }
-          findNextMatchSync(t3, n3, e2) {
-            let r2 = a, i2 = 0;
-            if ("number" == typeof e2 ? (8 & e2 && (r2 = true), i2 = e2) : "boolean" == typeof e2 && (r2 = e2), "string" == typeof t3) {
-              t3 = new s(t3);
-              const e3 = this._findNextMatchSync(t3, n3, r2, i2);
-              return t3.dispose(), e3;
-            }
-            return this._findNextMatchSync(t3, n3, r2, i2);
-          }
-          _findNextMatchSync(t3, n3, e2, r2) {
-            const i2 = this._onigBinding;
-            let o2;
-            if (o2 = e2 ? i2._findNextOnigScannerMatchDbg(this._ptr, t3.id, t3.ptr, t3.utf8Length, t3.convertUtf16OffsetToUtf8(n3), r2) : i2._findNextOnigScannerMatch(this._ptr, t3.id, t3.ptr, t3.utf8Length, t3.convertUtf16OffsetToUtf8(n3), r2), 0 === o2)
-              return null;
-            const a2 = i2.HEAPU32;
-            let f2 = o2 / 4;
-            const s2 = a2[f2++], u2 = a2[f2++];
-            let c2 = [];
-            for (let n4 = 0; n4 < u2; n4++) {
-              const e3 = t3.convertUtf8OffsetToUtf16(a2[f2++]), r3 = t3.convertUtf8OffsetToUtf16(a2[f2++]);
-              c2[n4] = { start: e3, end: r3, length: r3 - e3 };
-            }
-            return { index: s2, captureIndices: c2 };
-          }
-        }
-        n2.OnigScanner = u;
-        let c = false, l = null;
-        n2.loadWASM = function(t3) {
-          if (c)
-            return l;
-          let n3, e2, r2, a2;
-          if (c = true, function(t4) {
-            return "function" == typeof t4.instantiator;
-          }(t3))
-            n3 = t3.instantiator, e2 = t3.print;
-          else {
-            let r3;
-            !function(t4) {
-              return void 0 !== t4.data;
-            }(t3) ? r3 = t3 : (r3 = t3.data, e2 = t3.print), n3 = function(t4) {
-              return "undefined" != typeof Response && t4 instanceof Response;
-            }(r3) ? "function" == typeof WebAssembly.instantiateStreaming ? function(t4) {
-              return (n4) => WebAssembly.instantiateStreaming(t4, n4);
-            }(r3) : function(t4) {
-              return async (n4) => {
-                const e3 = await t4.arrayBuffer();
-                return WebAssembly.instantiate(e3, n4);
-              };
-            }(r3) : function(t4) {
-              return (n4) => WebAssembly.instantiate(t4, n4);
-            }(r3);
-          }
-          return l = new Promise((t4, n4) => {
-            r2 = t4, a2 = n4;
-          }), function(t4, n4, e3, r3) {
-            (0, i.default)({ print: n4, instantiateWasm: (n5, e4) => {
-              if ("undefined" == typeof performance) {
-                const t5 = () => Date.now();
-                n5.env.emscripten_get_now = t5, n5.wasi_snapshot_preview1.emscripten_get_now = t5;
-              }
-              return t4(n5).then((t5) => e4(t5.instance), r3), {};
-            } }).then((t5) => {
-              o = t5, e3();
-            });
-          }(n3, e2, r2, a2), l;
-        }, n2.createOnigString = function(t3) {
-          return new s(t3);
-        }, n2.createOnigScanner = function(t3) {
-          return new u(t3);
-        }, n2.setDefaultDebugCall = function(t3) {
-          a = t3;
-        };
-      }, 418: (t2) => {
-        var n2 = ("undefined" != typeof document && document.currentScript && document.currentScript.src, function(t3) {
-          var n3, e, r = void 0 !== (t3 = t3 || {}) ? t3 : {};
-          r.ready = new Promise(function(t4, r2) {
-            n3 = t4, e = r2;
-          });
-          var i, o = Object.assign({}, r), a = [], f = false, s = false, u = true, c = "";
-          function l(t4) {
-            return r.locateFile ? r.locateFile(t4, c) : c + t4;
-          }
-          u && (i = function(t4) {
-            let n4;
-            return "function" == typeof readbuffer ? new Uint8Array(readbuffer(t4)) : (n4 = read(t4, "binary"), m("object" == typeof n4), n4);
-          }, "undefined" != typeof scriptArgs ? a = scriptArgs : void 0 !== arguments && (a = arguments), "undefined" != typeof onig_print && ("undefined" == typeof console && (console = {}), console.log = onig_print, console.warn = console.error = "undefined" != typeof printErr ? printErr : onig_print));
-          var h, p, d = r.print || console.log.bind(console), g = r.printErr || console.warn.bind(console);
-          Object.assign(r, o), o = null, r.arguments && (a = r.arguments), r.thisProgram && r.thisProgram, r.quit && r.quit, r.wasmBinary && (h = r.wasmBinary), r.noExitRuntime, "object" != typeof WebAssembly && k("no native wasm support detected");
-          var _ = false;
-          function m(t4, n4) {
-            t4 || k(n4);
-          }
-          var y, w, S, v = "undefined" != typeof TextDecoder ? new TextDecoder("utf8") : void 0;
-          function A(t4, n4, e2) {
-            for (var r2 = n4 + e2, i2 = n4; t4[i2] && !(i2 >= r2); )
-              ++i2;
-            if (i2 - n4 > 16 && t4.buffer && v)
-              return v.decode(t4.subarray(n4, i2));
-            for (var o2 = ""; n4 < i2; ) {
-              var a2 = t4[n4++];
-              if (128 & a2) {
-                var f2 = 63 & t4[n4++];
-                if (192 != (224 & a2)) {
-                  var s2 = 63 & t4[n4++];
-                  if ((a2 = 224 == (240 & a2) ? (15 & a2) << 12 | f2 << 6 | s2 : (7 & a2) << 18 | f2 << 12 | s2 << 6 | 63 & t4[n4++]) < 65536)
-                    o2 += String.fromCharCode(a2);
-                  else {
-                    var u2 = a2 - 65536;
-                    o2 += String.fromCharCode(55296 | u2 >> 10, 56320 | 1023 & u2);
-                  }
-                } else
-                  o2 += String.fromCharCode((31 & a2) << 6 | f2);
-              } else
-                o2 += String.fromCharCode(a2);
-            }
-            return o2;
-          }
-          function b(t4, n4) {
-            return t4 ? A(w, t4, n4) : "";
-          }
-          function O(t4) {
-            y = t4, r.HEAP8 = new Int8Array(t4), r.HEAP16 = new Int16Array(t4), r.HEAP32 = new Int32Array(t4), r.HEAPU8 = w = new Uint8Array(t4), r.HEAPU16 = new Uint16Array(t4), r.HEAPU32 = S = new Uint32Array(t4), r.HEAPF32 = new Float32Array(t4), r.HEAPF64 = new Float64Array(t4);
-          }
-          r.INITIAL_MEMORY;
-          var U = [], P = [], R = [];
-          function x() {
-            if (r.preRun)
-              for ("function" == typeof r.preRun && (r.preRun = [r.preRun]); r.preRun.length; )
-                M(r.preRun.shift());
-            G(U);
-          }
-          function T() {
-            G(P);
-          }
-          function E() {
-            if (r.postRun)
-              for ("function" == typeof r.postRun && (r.postRun = [r.postRun]); r.postRun.length; )
-                I(r.postRun.shift());
-            G(R);
-          }
-          function M(t4) {
-            U.unshift(t4);
-          }
-          function L(t4) {
-            P.unshift(t4);
-          }
-          function I(t4) {
-            R.unshift(t4);
-          }
-          var W = 0, D = null, C = null;
-          function N(t4) {
-            W++, r.monitorRunDependencies && r.monitorRunDependencies(W);
-          }
-          function j(t4) {
-            if (W--, r.monitorRunDependencies && r.monitorRunDependencies(W), 0 == W && (null !== D && (clearInterval(D), D = null), C)) {
-              var n4 = C;
-              C = null, n4();
-            }
-          }
-          function k(t4) {
-            r.onAbort && r.onAbort(t4), g(t4 = "Aborted(" + t4 + ")"), _ = true, t4 += ". Build with -sASSERTIONS for more info.";
-            var n4 = new WebAssembly.RuntimeError(t4);
-            throw e(n4), n4;
-          }
-          var B, H, F = "data:application/octet-stream;base64,";
-          function V(t4) {
-            return t4.startsWith(F);
-          }
-          function z(t4) {
-            try {
-              if (t4 == B && h)
-                return new Uint8Array(h);
-              if (i)
-                return i(t4);
-              throw "both async and sync fetching of the wasm failed";
-            } catch (t5) {
-              k(t5);
-            }
-          }
-          function q() {
-            return h || !f && !s || "function" != typeof fetch ? Promise.resolve().then(function() {
-              return z(B);
-            }) : fetch(B, { credentials: "same-origin" }).then(function(t4) {
-              if (!t4.ok)
-                throw "failed to load wasm binary file at '" + B + "'";
-              return t4.arrayBuffer();
-            }).catch(function() {
-              return z(B);
-            });
-          }
-          function Y() {
-            var t4 = { env: nt, wasi_snapshot_preview1: nt };
-            function n4(t5, n5) {
-              var e2 = t5.exports;
-              r.asm = e2, O((p = r.asm.memory).buffer), r.asm.__indirect_function_table, L(r.asm.__wasm_call_ctors), j();
-            }
-            function i2(t5) {
-              n4(t5.instance);
-            }
-            function o2(n5) {
-              return q().then(function(n6) {
-                return WebAssembly.instantiate(n6, t4);
-              }).then(function(t5) {
-                return t5;
-              }).then(n5, function(t5) {
-                g("failed to asynchronously prepare wasm: " + t5), k(t5);
-              });
-            }
-            if (N(), r.instantiateWasm)
-              try {
-                return r.instantiateWasm(t4, n4);
-              } catch (t5) {
-                g("Module.instantiateWasm callback failed with error: " + t5), e(t5);
-              }
-            return (h || "function" != typeof WebAssembly.instantiateStreaming || V(B) || "function" != typeof fetch ? o2(i2) : fetch(B, { credentials: "same-origin" }).then(function(n5) {
-              return WebAssembly.instantiateStreaming(n5, t4).then(i2, function(t5) {
-                return g("wasm streaming compile failed: " + t5), g("falling back to ArrayBuffer instantiation"), o2(i2);
-              });
-            })).catch(e), {};
-          }
-          function G(t4) {
-            for (; t4.length > 0; )
-              t4.shift()(r);
-          }
-          function J(t4, n4, e2) {
-            w.copyWithin(t4, n4, n4 + e2);
-          }
-          function K(t4) {
-            try {
-              return p.grow(t4 - y.byteLength + 65535 >>> 16), O(p.buffer), 1;
-            } catch (t5) {
-            }
-          }
-          function Q(t4) {
-            var n4, e2 = w.length, r2 = 2147483648;
-            if ((t4 >>>= 0) > r2)
-              return false;
-            for (var i2 = 1; i2 <= 4; i2 *= 2) {
-              var o2 = e2 * (1 + 0.2 / i2);
-              if (o2 = Math.min(o2, t4 + 100663296), K(Math.min(r2, (n4 = Math.max(t4, o2)) + (65536 - n4 % 65536) % 65536)))
-                return true;
-            }
-            return false;
-          }
-          V(B = "onig.wasm") || (B = l(B)), H = "undefined" != typeof dateNow ? dateNow : () => performance.now();
-          var X = [null, [], []];
-          function Z(t4, n4) {
-            var e2 = X[t4];
-            0 === n4 || 10 === n4 ? ((1 === t4 ? d : g)(A(e2, 0)), e2.length = 0) : e2.push(n4);
-          }
-          function $(t4, n4, e2, r2) {
-            for (var i2 = 0, o2 = 0; o2 < e2; o2++) {
-              var a2 = S[n4 >> 2], f2 = S[n4 + 4 >> 2];
-              n4 += 8;
-              for (var s2 = 0; s2 < f2; s2++)
-                Z(t4, w[a2 + s2]);
-              i2 += f2;
-            }
-            return S[r2 >> 2] = i2, 0;
-          }
-          var tt, nt = { emscripten_get_now: H, emscripten_memcpy_big: J, emscripten_resize_heap: Q, fd_write: $ };
-          function et(t4) {
-            function e2() {
-              tt || (tt = true, r.calledRun = true, _ || (T(), n3(r), r.onRuntimeInitialized && r.onRuntimeInitialized(), E()));
-            }
-            t4 = t4 || a, W > 0 || (x(), W > 0 || (r.setStatus ? (r.setStatus("Running..."), setTimeout(function() {
-              setTimeout(function() {
-                r.setStatus("");
-              }, 1), e2();
-            }, 1)) : e2()));
-          }
-          if (Y(), r.___wasm_call_ctors = function() {
-            return (r.___wasm_call_ctors = r.asm.__wasm_call_ctors).apply(null, arguments);
-          }, r.___errno_location = function() {
-            return (r.___errno_location = r.asm.__errno_location).apply(null, arguments);
-          }, r._omalloc = function() {
-            return (r._omalloc = r.asm.omalloc).apply(null, arguments);
-          }, r._ofree = function() {
-            return (r._ofree = r.asm.ofree).apply(null, arguments);
-          }, r._getLastOnigError = function() {
-            return (r._getLastOnigError = r.asm.getLastOnigError).apply(null, arguments);
-          }, r._createOnigScanner = function() {
-            return (r._createOnigScanner = r.asm.createOnigScanner).apply(null, arguments);
-          }, r._freeOnigScanner = function() {
-            return (r._freeOnigScanner = r.asm.freeOnigScanner).apply(null, arguments);
-          }, r._findNextOnigScannerMatch = function() {
-            return (r._findNextOnigScannerMatch = r.asm.findNextOnigScannerMatch).apply(null, arguments);
-          }, r._findNextOnigScannerMatchDbg = function() {
-            return (r._findNextOnigScannerMatchDbg = r.asm.findNextOnigScannerMatchDbg).apply(null, arguments);
-          }, r.stackSave = function() {
-            return (r.stackSave = r.asm.stackSave).apply(null, arguments);
-          }, r.stackRestore = function() {
-            return (r.stackRestore = r.asm.stackRestore).apply(null, arguments);
-          }, r.stackAlloc = function() {
-            return (r.stackAlloc = r.asm.stackAlloc).apply(null, arguments);
-          }, r.dynCall_jiji = function() {
-            return (r.dynCall_jiji = r.asm.dynCall_jiji).apply(null, arguments);
-          }, r.UTF8ToString = b, C = function t4() {
-            tt || et(), tt || (C = t4);
-          }, r.preInit)
-            for ("function" == typeof r.preInit && (r.preInit = [r.preInit]); r.preInit.length > 0; )
-              r.preInit.pop()();
-          return et(), t3.ready;
-        });
-        t2.exports = n2;
-      } }, n = {}, function e(r) {
-        var i = n[r];
-        if (void 0 !== i)
-          return i.exports;
-        var o = n[r] = { exports: {} };
-        return t[r].call(o.exports, o, o.exports, e), o.exports;
-      }(770);
-      var t, n;
-    });
-  }
-});
-
 // node_modules/vscode-textmate/release/main.js
-var require_main2 = __commonJS({
+var require_main = __commonJS({
   "node_modules/vscode-textmate/release/main.js"(exports, module) {
     !function(e, t) {
       "object" == typeof exports && "object" == typeof module ? module.exports = t() : "function" == typeof define && define.amd ? define([], t) : "object" == typeof exports ? exports.vscodetextmate = t() : e.vscodetextmate = t();
@@ -2519,2442 +2102,464 @@ var require_main2 = __commonJS({
   }
 });
 
-// (disabled):path
-var require_path = __commonJS({
-  "(disabled):path"() {
-  }
-});
-
-// (disabled):fs
-var require_fs = __commonJS({
-  "(disabled):fs"() {
-  }
-});
-
-// node_modules/shiki/dist/index.esm.js
-var import_vscode_oniguruma = __toESM(require_main());
-var import_vscode_textmate = __toESM(require_main2());
-var languages = [
-  {
-    id: "abap",
-    scopeName: "source.abap",
-    path: "abap.tmLanguage.json",
-    samplePath: "abap.sample"
-  },
-  {
-    id: "actionscript-3",
-    scopeName: "source.actionscript.3",
-    path: "actionscript-3.tmLanguage.json",
-    samplePath: "actionscript-3.sample"
-  },
-  {
-    id: "ada",
-    scopeName: "source.ada",
-    path: "ada.tmLanguage.json",
-    samplePath: "ada.sample"
-  },
-  {
-    id: "apache",
-    scopeName: "source.apacheconf",
-    path: "apache.tmLanguage.json"
-  },
-  {
-    id: "apex",
-    scopeName: "source.apex",
-    path: "apex.tmLanguage.json",
-    samplePath: "apex.sample"
-  },
-  {
-    id: "apl",
-    scopeName: "source.apl",
-    path: "apl.tmLanguage.json",
-    embeddedLangs: ["html", "xml", "css", "javascript", "json"]
-  },
-  {
-    id: "applescript",
-    scopeName: "source.applescript",
-    path: "applescript.tmLanguage.json",
-    samplePath: "applescript.sample"
-  },
-  {
-    id: "asm",
-    scopeName: "source.asm.x86_64",
-    path: "asm.tmLanguage.json",
-    samplePath: "asm.sample"
-  },
-  {
-    id: "astro",
-    scopeName: "source.astro",
-    path: "astro.tmLanguage.json",
-    samplePath: "astro.sample",
-    embeddedLangs: ["json", "javascript", "typescript", "tsx", "css", "less", "sass", "scss", "stylus"]
-  },
-  {
-    id: "awk",
-    scopeName: "source.awk",
-    path: "awk.tmLanguage.json",
-    samplePath: "awk.sample"
-  },
-  {
-    id: "ballerina",
-    scopeName: "source.ballerina",
-    path: "ballerina.tmLanguage.json",
-    samplePath: "ballerina.sample"
-  },
-  {
-    id: "bat",
-    scopeName: "source.batchfile",
-    path: "bat.tmLanguage.json",
-    samplePath: "bat.sample",
-    aliases: ["batch"]
-  },
-  {
-    id: "berry",
-    scopeName: "source.berry",
-    path: "berry.tmLanguage.json",
-    samplePath: "berry.sample",
-    aliases: ["be"]
-  },
-  {
-    id: "bibtex",
-    scopeName: "text.bibtex",
-    path: "bibtex.tmLanguage.json"
-  },
-  {
-    id: "bicep",
-    scopeName: "source.bicep",
-    path: "bicep.tmLanguage.json",
-    samplePath: "bicep.sample"
-  },
-  {
-    id: "blade",
-    scopeName: "text.html.php.blade",
-    path: "blade.tmLanguage.json",
-    samplePath: "blade.sample",
-    embeddedLangs: ["html", "xml", "sql", "javascript", "json", "css"]
-  },
-  {
-    id: "c",
-    scopeName: "source.c",
-    path: "c.tmLanguage.json",
-    samplePath: "c.sample"
-  },
-  {
-    id: "cadence",
-    scopeName: "source.cadence",
-    path: "cadence.tmLanguage.json",
-    samplePath: "cadence.sample",
-    aliases: ["cdc"]
-  },
-  {
-    id: "clarity",
-    scopeName: "source.clar",
-    path: "clarity.tmLanguage.json",
-    samplePath: "clarity.sample"
-  },
-  {
-    id: "clojure",
-    scopeName: "source.clojure",
-    path: "clojure.tmLanguage.json",
-    samplePath: "clojure.sample",
-    aliases: ["clj"]
-  },
-  {
-    id: "cmake",
-    scopeName: "source.cmake",
-    path: "cmake.tmLanguage.json",
-    samplePath: "cmake.sample"
-  },
-  {
-    id: "cobol",
-    scopeName: "source.cobol",
-    path: "cobol.tmLanguage.json",
-    samplePath: "cobol.sample",
-    embeddedLangs: ["sql", "html", "java"]
-  },
-  {
-    id: "codeql",
-    scopeName: "source.ql",
-    path: "codeql.tmLanguage.json",
-    samplePath: "codeql.sample",
-    aliases: ["ql"],
-    embeddedLangs: ["markdown"]
-  },
-  {
-    id: "coffee",
-    scopeName: "source.coffee",
-    path: "coffee.tmLanguage.json",
-    samplePath: "coffee.sample",
-    embeddedLangs: ["javascript"]
-  },
-  {
-    id: "cpp",
-    scopeName: "source.cpp",
-    path: "cpp.tmLanguage.json",
-    samplePath: "cpp.sample",
-    embeddedLangs: ["glsl", "sql"]
-  },
-  {
-    id: "crystal",
-    scopeName: "source.crystal",
-    path: "crystal.tmLanguage.json",
-    samplePath: "crystal.sample",
-    embeddedLangs: ["html", "sql", "css", "c", "javascript", "shellscript"]
-  },
-  {
-    id: "csharp",
-    scopeName: "source.cs",
-    path: "csharp.tmLanguage.json",
-    samplePath: "csharp.sample",
-    aliases: ["c#", "cs"]
-  },
-  {
-    id: "css",
-    scopeName: "source.css",
-    path: "css.tmLanguage.json",
-    samplePath: "css.sample"
-  },
-  {
-    id: "cue",
-    scopeName: "source.cue",
-    path: "cue.tmLanguage.json",
-    samplePath: "cue.sample"
-  },
-  {
-    id: "d",
-    scopeName: "source.d",
-    path: "d.tmLanguage.json",
-    samplePath: "d.sample"
-  },
-  {
-    id: "dart",
-    scopeName: "source.dart",
-    path: "dart.tmLanguage.json",
-    samplePath: "dart.sample"
-  },
-  {
-    id: "diff",
-    scopeName: "source.diff",
-    path: "diff.tmLanguage.json",
-    samplePath: "diff.sample"
-  },
-  {
-    id: "docker",
-    scopeName: "source.dockerfile",
-    path: "docker.tmLanguage.json",
-    samplePath: "docker.sample"
-  },
-  {
-    id: "dream-maker",
-    scopeName: "source.dm",
-    path: "dream-maker.tmLanguage.json"
-  },
-  {
-    id: "elixir",
-    scopeName: "source.elixir",
-    path: "elixir.tmLanguage.json",
-    samplePath: "elixir.sample",
-    embeddedLangs: ["html"]
-  },
-  {
-    id: "elm",
-    scopeName: "source.elm",
-    path: "elm.tmLanguage.json",
-    samplePath: "elm.sample",
-    embeddedLangs: ["glsl"]
-  },
-  {
-    id: "erb",
-    scopeName: "text.html.erb",
-    path: "erb.tmLanguage.json",
-    samplePath: "erb.sample",
-    embeddedLangs: ["html", "ruby"]
-  },
-  {
-    id: "erlang",
-    scopeName: "source.erlang",
-    path: "erlang.tmLanguage.json",
-    samplePath: "erlang.sample",
-    aliases: ["erl"]
-  },
-  {
-    id: "fish",
-    scopeName: "source.fish",
-    path: "fish.tmLanguage.json",
-    samplePath: "fish.sample"
-  },
-  {
-    id: "fsharp",
-    scopeName: "source.fsharp",
-    path: "fsharp.tmLanguage.json",
-    samplePath: "fsharp.sample",
-    aliases: ["f#", "fs"],
-    embeddedLangs: ["markdown"]
-  },
-  {
-    id: "gherkin",
-    scopeName: "text.gherkin.feature",
-    path: "gherkin.tmLanguage.json"
-  },
-  {
-    id: "git-commit",
-    scopeName: "text.git-commit",
-    path: "git-commit.tmLanguage.json",
-    embeddedLangs: ["diff"]
-  },
-  {
-    id: "git-rebase",
-    scopeName: "text.git-rebase",
-    path: "git-rebase.tmLanguage.json",
-    embeddedLangs: ["shellscript"]
-  },
-  {
-    id: "glsl",
-    scopeName: "source.glsl",
-    path: "glsl.tmLanguage.json",
-    samplePath: "glsl.sample",
-    embeddedLangs: ["c"]
-  },
-  {
-    id: "gnuplot",
-    scopeName: "source.gnuplot",
-    path: "gnuplot.tmLanguage.json"
-  },
-  {
-    id: "go",
-    scopeName: "source.go",
-    path: "go.tmLanguage.json",
-    samplePath: "go.sample"
-  },
-  {
-    id: "graphql",
-    scopeName: "source.graphql",
-    path: "graphql.tmLanguage.json",
-    embeddedLangs: ["javascript", "typescript", "jsx", "tsx"]
-  },
-  {
-    id: "groovy",
-    scopeName: "source.groovy",
-    path: "groovy.tmLanguage.json"
-  },
-  {
-    id: "hack",
-    scopeName: "source.hack",
-    path: "hack.tmLanguage.json",
-    embeddedLangs: ["html", "sql"]
-  },
-  {
-    id: "haml",
-    scopeName: "text.haml",
-    path: "haml.tmLanguage.json",
-    embeddedLangs: ["ruby", "javascript", "sass", "coffee", "markdown", "css"]
-  },
-  {
-    id: "handlebars",
-    scopeName: "text.html.handlebars",
-    path: "handlebars.tmLanguage.json",
-    aliases: ["hbs"],
-    embeddedLangs: ["html", "css", "javascript", "yaml"]
-  },
-  {
-    id: "haskell",
-    scopeName: "source.haskell",
-    path: "haskell.tmLanguage.json",
-    aliases: ["hs"]
-  },
-  {
-    id: "hcl",
-    scopeName: "source.hcl",
-    path: "hcl.tmLanguage.json",
-    samplePath: "hcl.sample"
-  },
-  {
-    id: "hlsl",
-    scopeName: "source.hlsl",
-    path: "hlsl.tmLanguage.json"
-  },
-  {
-    id: "html",
-    scopeName: "text.html.basic",
-    path: "html.tmLanguage.json",
-    samplePath: "html.sample",
-    embeddedLangs: ["javascript", "css"]
-  },
-  {
-    id: "imba",
-    scopeName: "source.imba",
-    path: "imba.tmLanguage.json",
-    samplePath: "imba.sample"
-  },
-  {
-    id: "ini",
-    scopeName: "source.ini",
-    path: "ini.tmLanguage.json"
-  },
-  {
-    id: "java",
-    scopeName: "source.java",
-    path: "java.tmLanguage.json",
-    samplePath: "java.sample"
-  },
-  {
-    id: "javascript",
-    scopeName: "source.js",
-    path: "javascript.tmLanguage.json",
-    samplePath: "javascript.sample",
-    aliases: ["js"]
-  },
-  {
-    id: "jinja-html",
-    scopeName: "text.html.jinja",
-    path: "jinja-html.tmLanguage.json",
-    embeddedLangs: ["html"]
-  },
-  {
-    id: "json",
-    scopeName: "source.json",
-    path: "json.tmLanguage.json"
-  },
-  {
-    id: "json5",
-    scopeName: "source.json5",
-    path: "json5.tmLanguage.json",
-    samplePath: "json5.sample"
-  },
-  {
-    id: "jsonc",
-    scopeName: "source.json.comments",
-    path: "jsonc.tmLanguage.json"
-  },
-  {
-    id: "jsonnet",
-    scopeName: "source.jsonnet",
-    path: "jsonnet.tmLanguage.json"
-  },
-  {
-    id: "jssm",
-    scopeName: "source.jssm",
-    path: "jssm.tmLanguage.json",
-    samplePath: "jssm.sample",
-    aliases: ["fsl"]
-  },
-  {
-    id: "jsx",
-    scopeName: "source.js.jsx",
-    path: "jsx.tmLanguage.json"
-  },
-  {
-    id: "julia",
-    scopeName: "source.julia",
-    path: "julia.tmLanguage.json",
-    embeddedLangs: ["cpp", "python", "javascript", "r", "sql"]
-  },
-  {
-    id: "kotlin",
-    scopeName: "source.kotlin",
-    path: "kotlin.tmLanguage.json"
-  },
-  {
-    id: "latex",
-    scopeName: "text.tex.latex",
-    path: "latex.tmLanguage.json",
-    embeddedLangs: ["tex", "css", "haskell", "html", "xml", "java", "lua", "julia", "ruby", "javascript", "typescript", "python", "yaml", "rust", "scala", "gnuplot"]
-  },
-  {
-    id: "less",
-    scopeName: "source.css.less",
-    path: "less.tmLanguage.json",
-    embeddedLangs: ["css"]
-  },
-  {
-    id: "liquid",
-    scopeName: "text.html.liquid",
-    path: "liquid.tmLanguage.json",
-    samplePath: "liquid.sample",
-    embeddedLangs: ["html", "css", "json", "javascript"]
-  },
-  {
-    id: "lisp",
-    scopeName: "source.lisp",
-    path: "lisp.tmLanguage.json"
-  },
-  {
-    id: "logo",
-    scopeName: "source.logo",
-    path: "logo.tmLanguage.json"
-  },
-  {
-    id: "lua",
-    scopeName: "source.lua",
-    path: "lua.tmLanguage.json",
-    embeddedLangs: ["c"]
-  },
-  {
-    id: "make",
-    scopeName: "source.makefile",
-    path: "make.tmLanguage.json",
-    aliases: ["makefile"]
-  },
-  {
-    id: "markdown",
-    scopeName: "text.html.markdown",
-    path: "markdown.tmLanguage.json",
-    aliases: ["md"],
-    embeddedLangs: ["css", "html", "ini", "java", "lua", "make", "perl", "r", "ruby", "php", "sql", "vb", "xml", "xsl", "yaml", "bat", "clojure", "coffee", "c", "cpp", "diff", "docker", "git-commit", "git-rebase", "go", "groovy", "pug", "javascript", "json", "jsonc", "less", "objective-c", "swift", "scss", "raku", "powershell", "python", "julia", "rust", "scala", "shellscript", "typescript", "tsx", "csharp", "fsharp", "dart", "handlebars", "erlang", "elixir", "latex", "bibtex"]
-  },
-  {
-    id: "marko",
-    scopeName: "text.marko",
-    path: "marko.tmLanguage.json",
-    embeddedLangs: ["css", "less", "scss", "typescript"]
-  },
-  {
-    id: "matlab",
-    scopeName: "source.matlab",
-    path: "matlab.tmLanguage.json"
-  },
-  {
-    id: "mdx",
-    scopeName: "text.html.markdown.jsx",
-    path: "mdx.tmLanguage.json",
-    embeddedLangs: ["jsx", "markdown"]
-  },
-  {
-    id: "mermaid",
-    scopeName: "source.mermaid",
-    path: "mermaid.tmLanguage.json"
-  },
-  {
-    id: "nginx",
-    scopeName: "source.nginx",
-    path: "nginx.tmLanguage.json",
-    embeddedLangs: ["lua"]
-  },
-  {
-    id: "nim",
-    scopeName: "source.nim",
-    path: "nim.tmLanguage.json",
-    embeddedLangs: ["c", "html", "xml", "javascript", "css", "glsl", "markdown"]
-  },
-  {
-    id: "nix",
-    scopeName: "source.nix",
-    path: "nix.tmLanguage.json"
-  },
-  {
-    id: "objective-c",
-    scopeName: "source.objc",
-    path: "objective-c.tmLanguage.json",
-    aliases: ["objc"]
-  },
-  {
-    id: "objective-cpp",
-    scopeName: "source.objcpp",
-    path: "objective-cpp.tmLanguage.json"
-  },
-  {
-    id: "ocaml",
-    scopeName: "source.ocaml",
-    path: "ocaml.tmLanguage.json"
-  },
-  {
-    id: "pascal",
-    scopeName: "source.pascal",
-    path: "pascal.tmLanguage.json"
-  },
-  {
-    id: "perl",
-    scopeName: "source.perl",
-    path: "perl.tmLanguage.json",
-    embeddedLangs: ["html", "xml", "css", "javascript", "sql"]
-  },
-  {
-    id: "php",
-    scopeName: "source.php",
-    path: "php.tmLanguage.json",
-    embeddedLangs: ["html", "xml", "sql", "javascript", "json", "css"]
-  },
-  {
-    id: "plsql",
-    scopeName: "source.plsql.oracle",
-    path: "plsql.tmLanguage.json"
-  },
-  {
-    id: "postcss",
-    scopeName: "source.css.postcss",
-    path: "postcss.tmLanguage.json"
-  },
-  {
-    id: "powershell",
-    scopeName: "source.powershell",
-    path: "powershell.tmLanguage.json",
-    aliases: ["ps", "ps1"]
-  },
-  {
-    id: "prisma",
-    scopeName: "source.prisma",
-    path: "prisma.tmLanguage.json",
-    samplePath: "prisma.sample"
-  },
-  {
-    id: "prolog",
-    scopeName: "source.prolog",
-    path: "prolog.tmLanguage.json"
-  },
-  {
-    id: "proto",
-    scopeName: "source.proto",
-    path: "proto.tmLanguage.json",
-    samplePath: "proto.sample"
-  },
-  {
-    id: "pug",
-    scopeName: "text.pug",
-    path: "pug.tmLanguage.json",
-    aliases: ["jade"],
-    embeddedLangs: ["javascript", "css", "sass", "scss", "stylus", "coffee", "html"]
-  },
-  {
-    id: "puppet",
-    scopeName: "source.puppet",
-    path: "puppet.tmLanguage.json"
-  },
-  {
-    id: "purescript",
-    scopeName: "source.purescript",
-    path: "purescript.tmLanguage.json"
-  },
-  {
-    id: "python",
-    scopeName: "source.python",
-    path: "python.tmLanguage.json",
-    samplePath: "python.sample",
-    aliases: ["py"]
-  },
-  {
-    id: "r",
-    scopeName: "source.r",
-    path: "r.tmLanguage.json"
-  },
-  {
-    id: "raku",
-    scopeName: "source.perl.6",
-    path: "raku.tmLanguage.json",
-    aliases: ["perl6"]
-  },
-  {
-    id: "razor",
-    scopeName: "text.aspnetcorerazor",
-    path: "razor.tmLanguage.json",
-    embeddedLangs: ["html", "csharp"]
-  },
-  {
-    id: "rel",
-    scopeName: "source.rel",
-    path: "rel.tmLanguage.json",
-    samplePath: "rel.sample"
-  },
-  {
-    id: "riscv",
-    scopeName: "source.riscv",
-    path: "riscv.tmLanguage.json"
-  },
-  {
-    id: "rst",
-    scopeName: "source.rst",
-    path: "rst.tmLanguage.json",
-    embeddedLangs: ["cpp", "python", "javascript", "shellscript", "yaml", "cmake", "ruby"]
-  },
-  {
-    id: "ruby",
-    scopeName: "source.ruby",
-    path: "ruby.tmLanguage.json",
-    samplePath: "ruby.sample",
-    aliases: ["rb"],
-    embeddedLangs: ["html", "xml", "sql", "css", "c", "javascript", "shellscript", "lua"]
-  },
-  {
-    id: "rust",
-    scopeName: "source.rust",
-    path: "rust.tmLanguage.json",
-    aliases: ["rs"]
-  },
-  {
-    id: "sas",
-    scopeName: "source.sas",
-    path: "sas.tmLanguage.json",
-    embeddedLangs: ["sql"]
-  },
-  {
-    id: "sass",
-    scopeName: "source.sass",
-    path: "sass.tmLanguage.json"
-  },
-  {
-    id: "scala",
-    scopeName: "source.scala",
-    path: "scala.tmLanguage.json"
-  },
-  {
-    id: "scheme",
-    scopeName: "source.scheme",
-    path: "scheme.tmLanguage.json"
-  },
-  {
-    id: "scss",
-    scopeName: "source.css.scss",
-    path: "scss.tmLanguage.json",
-    embeddedLangs: ["css"]
-  },
-  {
-    id: "shaderlab",
-    scopeName: "source.shaderlab",
-    path: "shaderlab.tmLanguage.json",
-    aliases: ["shader"],
-    embeddedLangs: ["hlsl"]
-  },
-  {
-    id: "shellscript",
-    scopeName: "source.shell",
-    path: "shellscript.tmLanguage.json",
-    aliases: ["shell", "bash", "sh", "zsh"]
-  },
-  {
-    id: "smalltalk",
-    scopeName: "source.smalltalk",
-    path: "smalltalk.tmLanguage.json"
-  },
-  {
-    id: "solidity",
-    scopeName: "source.solidity",
-    path: "solidity.tmLanguage.json"
-  },
-  {
-    id: "sparql",
-    scopeName: "source.sparql",
-    path: "sparql.tmLanguage.json",
-    samplePath: "sparql.sample",
-    embeddedLangs: ["turtle"]
-  },
-  {
-    id: "sql",
-    scopeName: "source.sql",
-    path: "sql.tmLanguage.json"
-  },
-  {
-    id: "ssh-config",
-    scopeName: "source.ssh-config",
-    path: "ssh-config.tmLanguage.json"
-  },
-  {
-    id: "stata",
-    scopeName: "source.stata",
-    path: "stata.tmLanguage.json",
-    samplePath: "stata.sample",
-    embeddedLangs: ["sql"]
-  },
-  {
-    id: "stylus",
-    scopeName: "source.stylus",
-    path: "stylus.tmLanguage.json",
-    aliases: ["styl"]
-  },
-  {
-    id: "svelte",
-    scopeName: "source.svelte",
-    path: "svelte.tmLanguage.json",
-    embeddedLangs: ["javascript", "typescript", "coffee", "stylus", "sass", "css", "scss", "less", "postcss", "pug", "markdown"]
-  },
-  {
-    id: "swift",
-    scopeName: "source.swift",
-    path: "swift.tmLanguage.json"
-  },
-  {
-    id: "system-verilog",
-    scopeName: "source.systemverilog",
-    path: "system-verilog.tmLanguage.json"
-  },
-  {
-    id: "tasl",
-    scopeName: "source.tasl",
-    path: "tasl.tmLanguage.json",
-    samplePath: "tasl.sample"
-  },
-  {
-    id: "tcl",
-    scopeName: "source.tcl",
-    path: "tcl.tmLanguage.json"
-  },
-  {
-    id: "tex",
-    scopeName: "text.tex",
-    path: "tex.tmLanguage.json",
-    embeddedLangs: ["r"]
-  },
-  {
-    id: "toml",
-    scopeName: "source.toml",
-    path: "toml.tmLanguage.json"
-  },
-  {
-    id: "tsx",
-    scopeName: "source.tsx",
-    path: "tsx.tmLanguage.json",
-    samplePath: "tsx.sample"
-  },
-  {
-    id: "turtle",
-    scopeName: "source.turtle",
-    path: "turtle.tmLanguage.json",
-    samplePath: "turtle.sample"
-  },
-  {
-    id: "twig",
-    scopeName: "text.html.twig",
-    path: "twig.tmLanguage.json",
-    embeddedLangs: ["css", "javascript", "php", "python", "ruby"]
-  },
-  {
-    id: "typescript",
-    scopeName: "source.ts",
-    path: "typescript.tmLanguage.json",
-    aliases: ["ts"]
-  },
-  {
-    id: "v",
-    scopeName: "source.v",
-    path: "v.tmLanguage.json",
-    samplePath: "v.sample"
-  },
-  {
-    id: "vb",
-    scopeName: "source.asp.vb.net",
-    path: "vb.tmLanguage.json",
-    aliases: ["cmd"]
-  },
-  {
-    id: "verilog",
-    scopeName: "source.verilog",
-    path: "verilog.tmLanguage.json"
-  },
-  {
-    id: "vhdl",
-    scopeName: "source.vhdl",
-    path: "vhdl.tmLanguage.json"
-  },
-  {
-    id: "viml",
-    scopeName: "source.viml",
-    path: "viml.tmLanguage.json",
-    aliases: ["vim", "vimscript"]
-  },
-  {
-    id: "vue-html",
-    scopeName: "text.html.vue-html",
-    path: "vue-html.tmLanguage.json",
-    embeddedLangs: ["vue", "javascript"]
-  },
-  {
-    id: "vue",
-    scopeName: "source.vue",
-    path: "vue.tmLanguage.json",
-    embeddedLangs: ["html", "markdown", "pug", "stylus", "sass", "css", "scss", "less", "javascript", "typescript", "jsx", "tsx", "json", "jsonc", "yaml", "toml", "graphql"]
-  },
-  {
-    id: "wasm",
-    scopeName: "source.wat",
-    path: "wasm.tmLanguage.json"
-  },
-  {
-    id: "wenyan",
-    scopeName: "source.wenyan",
-    path: "wenyan.tmLanguage.json",
-    aliases: ["\u6587\u8A00"]
-  },
-  {
-    id: "xml",
-    scopeName: "text.xml",
-    path: "xml.tmLanguage.json",
-    embeddedLangs: ["java"]
-  },
-  {
-    id: "xsl",
-    scopeName: "text.xml.xsl",
-    path: "xsl.tmLanguage.json",
-    embeddedLangs: ["xml"]
-  },
-  {
-    id: "yaml",
-    scopeName: "source.yaml",
-    path: "yaml.tmLanguage.json"
-  },
-  {
-    id: "zenscript",
-    scopeName: "source.zenscript",
-    path: "zenscript.tmLanguage.json",
-    samplePath: "zenscript.sample"
-  }
-];
-var FontStyle = /* @__PURE__ */ ((FontStyle2) => {
-  FontStyle2[FontStyle2["NotSet"] = -1] = "NotSet";
-  FontStyle2[FontStyle2["None"] = 0] = "None";
-  FontStyle2[FontStyle2["Italic"] = 1] = "Italic";
-  FontStyle2[FontStyle2["Bold"] = 2] = "Bold";
-  FontStyle2[FontStyle2["Underline"] = 4] = "Underline";
-  return FontStyle2;
-})(FontStyle || {});
-var StackElementMetadata = class {
-  static toBinaryStr(metadata) {
-    let r = metadata.toString(2);
-    while (r.length < 32) {
-      r = "0" + r;
-    }
-    return r;
-  }
-  static printMetadata(metadata) {
-    let languageId = StackElementMetadata.getLanguageId(metadata);
-    let tokenType = StackElementMetadata.getTokenType(metadata);
-    let fontStyle = StackElementMetadata.getFontStyle(metadata);
-    let foreground = StackElementMetadata.getForeground(metadata);
-    let background = StackElementMetadata.getBackground(metadata);
-    console.log({
-      languageId,
-      tokenType,
-      fontStyle,
-      foreground,
-      background
-    });
-  }
-  static getLanguageId(metadata) {
-    return (metadata & 255) >>> 0;
-  }
-  static getTokenType(metadata) {
-    return (metadata & 768) >>> 8;
-  }
-  static getFontStyle(metadata) {
-    return (metadata & 14336) >>> 11;
-  }
-  static getForeground(metadata) {
-    return (metadata & 8372224) >>> 15;
-  }
-  static getBackground(metadata) {
-    return (metadata & 4286578688) >>> 24;
-  }
-  static containsBalancedBrackets(metadata) {
-    return (metadata & 1024) !== 0;
-  }
-  static set(metadata, languageId, tokenType, fontStyle, foreground, background) {
-    let _languageId = StackElementMetadata.getLanguageId(metadata);
-    let _tokenType = StackElementMetadata.getTokenType(metadata);
-    let _fontStyle = StackElementMetadata.getFontStyle(metadata);
-    let _foreground = StackElementMetadata.getForeground(metadata);
-    let _background = StackElementMetadata.getBackground(metadata);
-    let _containsBalancedBracketsBit = StackElementMetadata.containsBalancedBrackets(
-      metadata
-    ) ? 1 : 0;
-    if (languageId !== 0) {
-      _languageId = languageId;
-    }
-    if (tokenType !== 0) {
-      _tokenType = tokenType === 8 ? 0 : tokenType;
-    }
-    if (fontStyle !== -1) {
-      _fontStyle = fontStyle;
-    }
-    if (foreground !== 0) {
-      _foreground = foreground;
-    }
-    if (background !== 0) {
-      _background = background;
-    }
-    return (_languageId << 0 | _tokenType << 8 | _fontStyle << 11 | _containsBalancedBracketsBit << 10 | _foreground << 15 | _background << 24) >>> 0;
-  }
-};
-function trimEndSlash(str) {
-  if (str.endsWith("/") || str.endsWith("\\"))
-    return str.slice(0, -1);
-  return str;
-}
-function trimStartDot(str) {
-  if (str.startsWith("./"))
-    return str.slice(2);
-  return str;
-}
-function dirpathparts(str) {
-  const parts = str.split(/[\/\\]/g);
-  return parts.slice(0, parts.length - 1);
-}
-function join(...parts) {
-  return parts.map(trimEndSlash).map(trimStartDot).join("/");
-}
-function groupBy(elements, keyGetter) {
-  const map = /* @__PURE__ */ new Map();
-  for (const element of elements) {
-    const key = keyGetter(element);
-    if (map.has(key)) {
-      const group = map.get(key);
-      group.push(element);
-    } else {
-      map.set(key, [element]);
-    }
-  }
-  return map;
-}
-function createScanner(text, ignoreTrivia = false) {
-  const len = text.length;
-  let pos = 0, value = "", tokenOffset = 0, token = 16, lineNumber = 0, lineStartOffset = 0, tokenLineStartOffset = 0, prevTokenLineStartOffset = 0, scanError = 0;
-  function scanHexDigits(count, exact) {
-    let digits = 0;
-    let value2 = 0;
-    while (digits < count || !exact) {
-      let ch = text.charCodeAt(pos);
-      if (ch >= 48 && ch <= 57) {
-        value2 = value2 * 16 + ch - 48;
-      } else if (ch >= 65 && ch <= 70) {
-        value2 = value2 * 16 + ch - 65 + 10;
-      } else if (ch >= 97 && ch <= 102) {
-        value2 = value2 * 16 + ch - 97 + 10;
-      } else {
-        break;
-      }
-      pos++;
-      digits++;
-    }
-    if (digits < count) {
-      value2 = -1;
-    }
-    return value2;
-  }
-  function setPosition(newPosition) {
-    pos = newPosition;
-    value = "";
-    tokenOffset = 0;
-    token = 16;
-    scanError = 0;
-  }
-  function scanNumber() {
-    let start = pos;
-    if (text.charCodeAt(pos) === 48) {
-      pos++;
-    } else {
-      pos++;
-      while (pos < text.length && isDigit(text.charCodeAt(pos))) {
-        pos++;
-      }
-    }
-    if (pos < text.length && text.charCodeAt(pos) === 46) {
-      pos++;
-      if (pos < text.length && isDigit(text.charCodeAt(pos))) {
-        pos++;
-        while (pos < text.length && isDigit(text.charCodeAt(pos))) {
-          pos++;
-        }
-      } else {
-        scanError = 3;
-        return text.substring(start, pos);
-      }
-    }
-    let end = pos;
-    if (pos < text.length && (text.charCodeAt(pos) === 69 || text.charCodeAt(pos) === 101)) {
-      pos++;
-      if (pos < text.length && text.charCodeAt(pos) === 43 || text.charCodeAt(pos) === 45) {
-        pos++;
-      }
-      if (pos < text.length && isDigit(text.charCodeAt(pos))) {
-        pos++;
-        while (pos < text.length && isDigit(text.charCodeAt(pos))) {
-          pos++;
-        }
-        end = pos;
-      } else {
-        scanError = 3;
-      }
-    }
-    return text.substring(start, end);
-  }
-  function scanString() {
-    let result = "", start = pos;
-    while (true) {
-      if (pos >= len) {
-        result += text.substring(start, pos);
-        scanError = 2;
-        break;
-      }
-      const ch = text.charCodeAt(pos);
-      if (ch === 34) {
-        result += text.substring(start, pos);
-        pos++;
-        break;
-      }
-      if (ch === 92) {
-        result += text.substring(start, pos);
-        pos++;
-        if (pos >= len) {
-          scanError = 2;
-          break;
-        }
-        const ch2 = text.charCodeAt(pos++);
-        switch (ch2) {
-          case 34:
-            result += '"';
-            break;
-          case 92:
-            result += "\\";
-            break;
-          case 47:
-            result += "/";
-            break;
-          case 98:
-            result += "\b";
-            break;
-          case 102:
-            result += "\f";
-            break;
-          case 110:
-            result += "\n";
-            break;
-          case 114:
-            result += "\r";
-            break;
-          case 116:
-            result += "	";
-            break;
-          case 117:
-            const ch3 = scanHexDigits(4, true);
-            if (ch3 >= 0) {
-              result += String.fromCharCode(ch3);
-            } else {
-              scanError = 4;
-            }
-            break;
-          default:
-            scanError = 5;
-        }
-        start = pos;
-        continue;
-      }
-      if (ch >= 0 && ch <= 31) {
-        if (isLineBreak(ch)) {
-          result += text.substring(start, pos);
-          scanError = 2;
-          break;
-        } else {
-          scanError = 6;
-        }
-      }
-      pos++;
-    }
-    return result;
-  }
-  function scanNext() {
-    value = "";
-    scanError = 0;
-    tokenOffset = pos;
-    lineStartOffset = lineNumber;
-    prevTokenLineStartOffset = tokenLineStartOffset;
-    if (pos >= len) {
-      tokenOffset = len;
-      return token = 17;
-    }
-    let code = text.charCodeAt(pos);
-    if (isWhiteSpace(code)) {
-      do {
-        pos++;
-        value += String.fromCharCode(code);
-        code = text.charCodeAt(pos);
-      } while (isWhiteSpace(code));
-      return token = 15;
-    }
-    if (isLineBreak(code)) {
-      pos++;
-      value += String.fromCharCode(code);
-      if (code === 13 && text.charCodeAt(pos) === 10) {
-        pos++;
-        value += "\n";
-      }
-      lineNumber++;
-      tokenLineStartOffset = pos;
-      return token = 14;
-    }
-    switch (code) {
-      case 123:
-        pos++;
-        return token = 1;
-      case 125:
-        pos++;
-        return token = 2;
-      case 91:
-        pos++;
-        return token = 3;
-      case 93:
-        pos++;
-        return token = 4;
-      case 58:
-        pos++;
-        return token = 6;
-      case 44:
-        pos++;
-        return token = 5;
-      case 34:
-        pos++;
-        value = scanString();
-        return token = 10;
-      case 47:
-        const start = pos - 1;
-        if (text.charCodeAt(pos + 1) === 47) {
-          pos += 2;
-          while (pos < len) {
-            if (isLineBreak(text.charCodeAt(pos))) {
-              break;
-            }
-            pos++;
-          }
-          value = text.substring(start, pos);
-          return token = 12;
-        }
-        if (text.charCodeAt(pos + 1) === 42) {
-          pos += 2;
-          const safeLength = len - 1;
-          let commentClosed = false;
-          while (pos < safeLength) {
-            const ch = text.charCodeAt(pos);
-            if (ch === 42 && text.charCodeAt(pos + 1) === 47) {
-              pos += 2;
-              commentClosed = true;
-              break;
-            }
-            pos++;
-            if (isLineBreak(ch)) {
-              if (ch === 13 && text.charCodeAt(pos) === 10) {
-                pos++;
+// node_modules/vscode-oniguruma/release/main.js
+var require_main2 = __commonJS({
+  "node_modules/vscode-oniguruma/release/main.js"(exports, module) {
+    !function(t, n) {
+      "object" == typeof exports && "object" == typeof module ? module.exports = n() : "function" == typeof define && define.amd ? define([], n) : "object" == typeof exports ? exports.onig = n() : t.onig = n();
+    }(exports, () => {
+      return t = { 770: function(t2, n2, e) {
+        "use strict";
+        var r = this && this.__importDefault || function(t3) {
+          return t3 && t3.__esModule ? t3 : { default: t3 };
+        };
+        Object.defineProperty(n2, "__esModule", { value: true }), n2.setDefaultDebugCall = n2.createOnigScanner = n2.createOnigString = n2.loadWASM = n2.OnigScanner = n2.OnigString = void 0;
+        const i = r(e(418));
+        let o = null, a = false;
+        class f {
+          static _utf8ByteLength(t3) {
+            let n3 = 0;
+            for (let e2 = 0, r2 = t3.length; e2 < r2; e2++) {
+              const i2 = t3.charCodeAt(e2);
+              let o2 = i2, a2 = false;
+              if (i2 >= 55296 && i2 <= 56319 && e2 + 1 < r2) {
+                const n4 = t3.charCodeAt(e2 + 1);
+                n4 >= 56320 && n4 <= 57343 && (o2 = 65536 + (i2 - 55296 << 10) | n4 - 56320, a2 = true);
               }
-              lineNumber++;
-              tokenLineStartOffset = pos;
+              n3 += o2 <= 127 ? 1 : o2 <= 2047 ? 2 : o2 <= 65535 ? 3 : 4, a2 && e2++;
             }
+            return n3;
           }
-          if (!commentClosed) {
-            pos++;
-            scanError = 1;
+          constructor(t3) {
+            const n3 = t3.length, e2 = f._utf8ByteLength(t3), r2 = e2 !== n3, i2 = r2 ? new Uint32Array(n3 + 1) : null;
+            r2 && (i2[n3] = e2);
+            const o2 = r2 ? new Uint32Array(e2 + 1) : null;
+            r2 && (o2[e2] = n3);
+            const a2 = new Uint8Array(e2);
+            let s2 = 0;
+            for (let e3 = 0; e3 < n3; e3++) {
+              const f2 = t3.charCodeAt(e3);
+              let u2 = f2, c2 = false;
+              if (f2 >= 55296 && f2 <= 56319 && e3 + 1 < n3) {
+                const n4 = t3.charCodeAt(e3 + 1);
+                n4 >= 56320 && n4 <= 57343 && (u2 = 65536 + (f2 - 55296 << 10) | n4 - 56320, c2 = true);
+              }
+              r2 && (i2[e3] = s2, c2 && (i2[e3 + 1] = s2), u2 <= 127 ? o2[s2 + 0] = e3 : u2 <= 2047 ? (o2[s2 + 0] = e3, o2[s2 + 1] = e3) : u2 <= 65535 ? (o2[s2 + 0] = e3, o2[s2 + 1] = e3, o2[s2 + 2] = e3) : (o2[s2 + 0] = e3, o2[s2 + 1] = e3, o2[s2 + 2] = e3, o2[s2 + 3] = e3)), u2 <= 127 ? a2[s2++] = u2 : u2 <= 2047 ? (a2[s2++] = 192 | (1984 & u2) >>> 6, a2[s2++] = 128 | (63 & u2) >>> 0) : u2 <= 65535 ? (a2[s2++] = 224 | (61440 & u2) >>> 12, a2[s2++] = 128 | (4032 & u2) >>> 6, a2[s2++] = 128 | (63 & u2) >>> 0) : (a2[s2++] = 240 | (1835008 & u2) >>> 18, a2[s2++] = 128 | (258048 & u2) >>> 12, a2[s2++] = 128 | (4032 & u2) >>> 6, a2[s2++] = 128 | (63 & u2) >>> 0), c2 && e3++;
+            }
+            this.utf16Length = n3, this.utf8Length = e2, this.utf16Value = t3, this.utf8Value = a2, this.utf16OffsetToUtf8 = i2, this.utf8OffsetToUtf16 = o2;
           }
-          value = text.substring(start, pos);
-          return token = 13;
-        }
-        value += String.fromCharCode(code);
-        pos++;
-        return token = 16;
-      case 45:
-        value += String.fromCharCode(code);
-        pos++;
-        if (pos === len || !isDigit(text.charCodeAt(pos))) {
-          return token = 16;
-        }
-      case 48:
-      case 49:
-      case 50:
-      case 51:
-      case 52:
-      case 53:
-      case 54:
-      case 55:
-      case 56:
-      case 57:
-        value += scanNumber();
-        return token = 11;
-      default:
-        while (pos < len && isUnknownContentCharacter(code)) {
-          pos++;
-          code = text.charCodeAt(pos);
-        }
-        if (tokenOffset !== pos) {
-          value = text.substring(tokenOffset, pos);
-          switch (value) {
-            case "true":
-              return token = 8;
-            case "false":
-              return token = 9;
-            case "null":
-              return token = 7;
+          createString(t3) {
+            const n3 = t3._omalloc(this.utf8Length);
+            return t3.HEAPU8.set(this.utf8Value, n3), n3;
           }
-          return token = 16;
         }
-        value += String.fromCharCode(code);
-        pos++;
-        return token = 16;
-    }
-  }
-  function isUnknownContentCharacter(code) {
-    if (isWhiteSpace(code) || isLineBreak(code)) {
-      return false;
-    }
-    switch (code) {
-      case 125:
-      case 93:
-      case 123:
-      case 91:
-      case 34:
-      case 58:
-      case 44:
-      case 47:
-        return false;
-    }
-    return true;
-  }
-  function scanNextNonTrivia() {
-    let result;
-    do {
-      result = scanNext();
-    } while (result >= 12 && result <= 15);
-    return result;
-  }
-  return {
-    setPosition,
-    getPosition: () => pos,
-    scan: ignoreTrivia ? scanNextNonTrivia : scanNext,
-    getToken: () => token,
-    getTokenValue: () => value,
-    getTokenOffset: () => tokenOffset,
-    getTokenLength: () => pos - tokenOffset,
-    getTokenStartLine: () => lineStartOffset,
-    getTokenStartCharacter: () => tokenOffset - prevTokenLineStartOffset,
-    getTokenError: () => scanError
-  };
-}
-function isWhiteSpace(ch) {
-  return ch === 32 || ch === 9;
-}
-function isLineBreak(ch) {
-  return ch === 10 || ch === 13;
-}
-function isDigit(ch) {
-  return ch >= 48 && ch <= 57;
-}
-var CharacterCodes;
-(function(CharacterCodes2) {
-  CharacterCodes2[CharacterCodes2["lineFeed"] = 10] = "lineFeed";
-  CharacterCodes2[CharacterCodes2["carriageReturn"] = 13] = "carriageReturn";
-  CharacterCodes2[CharacterCodes2["space"] = 32] = "space";
-  CharacterCodes2[CharacterCodes2["_0"] = 48] = "_0";
-  CharacterCodes2[CharacterCodes2["_1"] = 49] = "_1";
-  CharacterCodes2[CharacterCodes2["_2"] = 50] = "_2";
-  CharacterCodes2[CharacterCodes2["_3"] = 51] = "_3";
-  CharacterCodes2[CharacterCodes2["_4"] = 52] = "_4";
-  CharacterCodes2[CharacterCodes2["_5"] = 53] = "_5";
-  CharacterCodes2[CharacterCodes2["_6"] = 54] = "_6";
-  CharacterCodes2[CharacterCodes2["_7"] = 55] = "_7";
-  CharacterCodes2[CharacterCodes2["_8"] = 56] = "_8";
-  CharacterCodes2[CharacterCodes2["_9"] = 57] = "_9";
-  CharacterCodes2[CharacterCodes2["a"] = 97] = "a";
-  CharacterCodes2[CharacterCodes2["b"] = 98] = "b";
-  CharacterCodes2[CharacterCodes2["c"] = 99] = "c";
-  CharacterCodes2[CharacterCodes2["d"] = 100] = "d";
-  CharacterCodes2[CharacterCodes2["e"] = 101] = "e";
-  CharacterCodes2[CharacterCodes2["f"] = 102] = "f";
-  CharacterCodes2[CharacterCodes2["g"] = 103] = "g";
-  CharacterCodes2[CharacterCodes2["h"] = 104] = "h";
-  CharacterCodes2[CharacterCodes2["i"] = 105] = "i";
-  CharacterCodes2[CharacterCodes2["j"] = 106] = "j";
-  CharacterCodes2[CharacterCodes2["k"] = 107] = "k";
-  CharacterCodes2[CharacterCodes2["l"] = 108] = "l";
-  CharacterCodes2[CharacterCodes2["m"] = 109] = "m";
-  CharacterCodes2[CharacterCodes2["n"] = 110] = "n";
-  CharacterCodes2[CharacterCodes2["o"] = 111] = "o";
-  CharacterCodes2[CharacterCodes2["p"] = 112] = "p";
-  CharacterCodes2[CharacterCodes2["q"] = 113] = "q";
-  CharacterCodes2[CharacterCodes2["r"] = 114] = "r";
-  CharacterCodes2[CharacterCodes2["s"] = 115] = "s";
-  CharacterCodes2[CharacterCodes2["t"] = 116] = "t";
-  CharacterCodes2[CharacterCodes2["u"] = 117] = "u";
-  CharacterCodes2[CharacterCodes2["v"] = 118] = "v";
-  CharacterCodes2[CharacterCodes2["w"] = 119] = "w";
-  CharacterCodes2[CharacterCodes2["x"] = 120] = "x";
-  CharacterCodes2[CharacterCodes2["y"] = 121] = "y";
-  CharacterCodes2[CharacterCodes2["z"] = 122] = "z";
-  CharacterCodes2[CharacterCodes2["A"] = 65] = "A";
-  CharacterCodes2[CharacterCodes2["B"] = 66] = "B";
-  CharacterCodes2[CharacterCodes2["C"] = 67] = "C";
-  CharacterCodes2[CharacterCodes2["D"] = 68] = "D";
-  CharacterCodes2[CharacterCodes2["E"] = 69] = "E";
-  CharacterCodes2[CharacterCodes2["F"] = 70] = "F";
-  CharacterCodes2[CharacterCodes2["G"] = 71] = "G";
-  CharacterCodes2[CharacterCodes2["H"] = 72] = "H";
-  CharacterCodes2[CharacterCodes2["I"] = 73] = "I";
-  CharacterCodes2[CharacterCodes2["J"] = 74] = "J";
-  CharacterCodes2[CharacterCodes2["K"] = 75] = "K";
-  CharacterCodes2[CharacterCodes2["L"] = 76] = "L";
-  CharacterCodes2[CharacterCodes2["M"] = 77] = "M";
-  CharacterCodes2[CharacterCodes2["N"] = 78] = "N";
-  CharacterCodes2[CharacterCodes2["O"] = 79] = "O";
-  CharacterCodes2[CharacterCodes2["P"] = 80] = "P";
-  CharacterCodes2[CharacterCodes2["Q"] = 81] = "Q";
-  CharacterCodes2[CharacterCodes2["R"] = 82] = "R";
-  CharacterCodes2[CharacterCodes2["S"] = 83] = "S";
-  CharacterCodes2[CharacterCodes2["T"] = 84] = "T";
-  CharacterCodes2[CharacterCodes2["U"] = 85] = "U";
-  CharacterCodes2[CharacterCodes2["V"] = 86] = "V";
-  CharacterCodes2[CharacterCodes2["W"] = 87] = "W";
-  CharacterCodes2[CharacterCodes2["X"] = 88] = "X";
-  CharacterCodes2[CharacterCodes2["Y"] = 89] = "Y";
-  CharacterCodes2[CharacterCodes2["Z"] = 90] = "Z";
-  CharacterCodes2[CharacterCodes2["asterisk"] = 42] = "asterisk";
-  CharacterCodes2[CharacterCodes2["backslash"] = 92] = "backslash";
-  CharacterCodes2[CharacterCodes2["closeBrace"] = 125] = "closeBrace";
-  CharacterCodes2[CharacterCodes2["closeBracket"] = 93] = "closeBracket";
-  CharacterCodes2[CharacterCodes2["colon"] = 58] = "colon";
-  CharacterCodes2[CharacterCodes2["comma"] = 44] = "comma";
-  CharacterCodes2[CharacterCodes2["dot"] = 46] = "dot";
-  CharacterCodes2[CharacterCodes2["doubleQuote"] = 34] = "doubleQuote";
-  CharacterCodes2[CharacterCodes2["minus"] = 45] = "minus";
-  CharacterCodes2[CharacterCodes2["openBrace"] = 123] = "openBrace";
-  CharacterCodes2[CharacterCodes2["openBracket"] = 91] = "openBracket";
-  CharacterCodes2[CharacterCodes2["plus"] = 43] = "plus";
-  CharacterCodes2[CharacterCodes2["slash"] = 47] = "slash";
-  CharacterCodes2[CharacterCodes2["formFeed"] = 12] = "formFeed";
-  CharacterCodes2[CharacterCodes2["tab"] = 9] = "tab";
-})(CharacterCodes || (CharacterCodes = {}));
-var ParseOptions;
-(function(ParseOptions2) {
-  ParseOptions2.DEFAULT = {
-    allowTrailingComma: false
-  };
-})(ParseOptions || (ParseOptions = {}));
-function parse$1(text, errors = [], options = ParseOptions.DEFAULT) {
-  let currentProperty = null;
-  let currentParent = [];
-  const previousParents = [];
-  function onValue(value) {
-    if (Array.isArray(currentParent)) {
-      currentParent.push(value);
-    } else if (currentProperty !== null) {
-      currentParent[currentProperty] = value;
-    }
-  }
-  const visitor = {
-    onObjectBegin: () => {
-      const object = {};
-      onValue(object);
-      previousParents.push(currentParent);
-      currentParent = object;
-      currentProperty = null;
-    },
-    onObjectProperty: (name) => {
-      currentProperty = name;
-    },
-    onObjectEnd: () => {
-      currentParent = previousParents.pop();
-    },
-    onArrayBegin: () => {
-      const array = [];
-      onValue(array);
-      previousParents.push(currentParent);
-      currentParent = array;
-      currentProperty = null;
-    },
-    onArrayEnd: () => {
-      currentParent = previousParents.pop();
-    },
-    onLiteralValue: onValue,
-    onError: (error, offset, length) => {
-      errors.push({ error, offset, length });
-    }
-  };
-  visit(text, visitor, options);
-  return currentParent[0];
-}
-function visit(text, visitor, options = ParseOptions.DEFAULT) {
-  const _scanner = createScanner(text, false);
-  const _jsonPath = [];
-  function toNoArgVisit(visitFunction) {
-    return visitFunction ? () => visitFunction(_scanner.getTokenOffset(), _scanner.getTokenLength(), _scanner.getTokenStartLine(), _scanner.getTokenStartCharacter()) : () => true;
-  }
-  function toNoArgVisitWithPath(visitFunction) {
-    return visitFunction ? () => visitFunction(_scanner.getTokenOffset(), _scanner.getTokenLength(), _scanner.getTokenStartLine(), _scanner.getTokenStartCharacter(), () => _jsonPath.slice()) : () => true;
-  }
-  function toOneArgVisit(visitFunction) {
-    return visitFunction ? (arg) => visitFunction(arg, _scanner.getTokenOffset(), _scanner.getTokenLength(), _scanner.getTokenStartLine(), _scanner.getTokenStartCharacter()) : () => true;
-  }
-  function toOneArgVisitWithPath(visitFunction) {
-    return visitFunction ? (arg) => visitFunction(arg, _scanner.getTokenOffset(), _scanner.getTokenLength(), _scanner.getTokenStartLine(), _scanner.getTokenStartCharacter(), () => _jsonPath.slice()) : () => true;
-  }
-  const onObjectBegin = toNoArgVisitWithPath(visitor.onObjectBegin), onObjectProperty = toOneArgVisitWithPath(visitor.onObjectProperty), onObjectEnd = toNoArgVisit(visitor.onObjectEnd), onArrayBegin = toNoArgVisitWithPath(visitor.onArrayBegin), onArrayEnd = toNoArgVisit(visitor.onArrayEnd), onLiteralValue = toOneArgVisitWithPath(visitor.onLiteralValue), onSeparator = toOneArgVisit(visitor.onSeparator), onComment = toNoArgVisit(visitor.onComment), onError = toOneArgVisit(visitor.onError);
-  const disallowComments = options && options.disallowComments;
-  const allowTrailingComma = options && options.allowTrailingComma;
-  function scanNext() {
-    while (true) {
-      const token = _scanner.scan();
-      switch (_scanner.getTokenError()) {
-        case 4:
-          handleError(14);
-          break;
-        case 5:
-          handleError(15);
-          break;
-        case 3:
-          handleError(13);
-          break;
-        case 1:
-          if (!disallowComments) {
-            handleError(11);
+        class s {
+          constructor(t3) {
+            if (this.id = ++s.LAST_ID, !o)
+              throw new Error("Must invoke loadWASM first.");
+            this._onigBinding = o, this.content = t3;
+            const n3 = new f(t3);
+            this.utf16Length = n3.utf16Length, this.utf8Length = n3.utf8Length, this.utf16OffsetToUtf8 = n3.utf16OffsetToUtf8, this.utf8OffsetToUtf16 = n3.utf8OffsetToUtf16, this.utf8Length < 1e4 && !s._sharedPtrInUse ? (s._sharedPtr || (s._sharedPtr = o._omalloc(1e4)), s._sharedPtrInUse = true, o.HEAPU8.set(n3.utf8Value, s._sharedPtr), this.ptr = s._sharedPtr) : this.ptr = n3.createString(o);
           }
-          break;
-        case 2:
-          handleError(12);
-          break;
-        case 6:
-          handleError(16);
-          break;
-      }
-      switch (token) {
-        case 12:
-        case 13:
-          if (disallowComments) {
-            handleError(10);
-          } else {
-            onComment();
+          convertUtf8OffsetToUtf16(t3) {
+            return this.utf8OffsetToUtf16 ? t3 < 0 ? 0 : t3 > this.utf8Length ? this.utf16Length : this.utf8OffsetToUtf16[t3] : t3;
           }
-          break;
-        case 16:
-          handleError(1);
-          break;
-        case 15:
-        case 14:
-          break;
-        default:
-          return token;
-      }
-    }
-  }
-  function handleError(error, skipUntilAfter = [], skipUntil = []) {
-    onError(error);
-    if (skipUntilAfter.length + skipUntil.length > 0) {
-      let token = _scanner.getToken();
-      while (token !== 17) {
-        if (skipUntilAfter.indexOf(token) !== -1) {
-          scanNext();
-          break;
-        } else if (skipUntil.indexOf(token) !== -1) {
-          break;
+          convertUtf16OffsetToUtf8(t3) {
+            return this.utf16OffsetToUtf8 ? t3 < 0 ? 0 : t3 > this.utf16Length ? this.utf8Length : this.utf16OffsetToUtf8[t3] : t3;
+          }
+          dispose() {
+            this.ptr === s._sharedPtr ? s._sharedPtrInUse = false : this._onigBinding._ofree(this.ptr);
+          }
         }
-        token = scanNext();
-      }
-    }
-  }
-  function parseString(isValue) {
-    const value = _scanner.getTokenValue();
-    if (isValue) {
-      onLiteralValue(value);
-    } else {
-      onObjectProperty(value);
-      _jsonPath.push(value);
-    }
-    scanNext();
-    return true;
-  }
-  function parseLiteral() {
-    switch (_scanner.getToken()) {
-      case 11:
-        const tokenValue = _scanner.getTokenValue();
-        let value = Number(tokenValue);
-        if (isNaN(value)) {
-          handleError(2);
-          value = 0;
+        n2.OnigString = s, s.LAST_ID = 0, s._sharedPtr = 0, s._sharedPtrInUse = false;
+        class u {
+          constructor(t3) {
+            if (!o)
+              throw new Error("Must invoke loadWASM first.");
+            const n3 = [], e2 = [];
+            for (let r3 = 0, i3 = t3.length; r3 < i3; r3++) {
+              const i4 = new f(t3[r3]);
+              n3[r3] = i4.createString(o), e2[r3] = i4.utf8Length;
+            }
+            const r2 = o._omalloc(4 * t3.length);
+            o.HEAPU32.set(n3, r2 / 4);
+            const i2 = o._omalloc(4 * t3.length);
+            o.HEAPU32.set(e2, i2 / 4);
+            const a2 = o._createOnigScanner(r2, i2, t3.length);
+            for (let e3 = 0, r3 = t3.length; e3 < r3; e3++)
+              o._ofree(n3[e3]);
+            o._ofree(i2), o._ofree(r2), 0 === a2 && function(t4) {
+              throw new Error(t4.UTF8ToString(t4._getLastOnigError()));
+            }(o), this._onigBinding = o, this._ptr = a2;
+          }
+          dispose() {
+            this._onigBinding._freeOnigScanner(this._ptr);
+          }
+          findNextMatchSync(t3, n3, e2) {
+            let r2 = a, i2 = 0;
+            if ("number" == typeof e2 ? (8 & e2 && (r2 = true), i2 = e2) : "boolean" == typeof e2 && (r2 = e2), "string" == typeof t3) {
+              t3 = new s(t3);
+              const e3 = this._findNextMatchSync(t3, n3, r2, i2);
+              return t3.dispose(), e3;
+            }
+            return this._findNextMatchSync(t3, n3, r2, i2);
+          }
+          _findNextMatchSync(t3, n3, e2, r2) {
+            const i2 = this._onigBinding;
+            let o2;
+            if (o2 = e2 ? i2._findNextOnigScannerMatchDbg(this._ptr, t3.id, t3.ptr, t3.utf8Length, t3.convertUtf16OffsetToUtf8(n3), r2) : i2._findNextOnigScannerMatch(this._ptr, t3.id, t3.ptr, t3.utf8Length, t3.convertUtf16OffsetToUtf8(n3), r2), 0 === o2)
+              return null;
+            const a2 = i2.HEAPU32;
+            let f2 = o2 / 4;
+            const s2 = a2[f2++], u2 = a2[f2++];
+            let c2 = [];
+            for (let n4 = 0; n4 < u2; n4++) {
+              const e3 = t3.convertUtf8OffsetToUtf16(a2[f2++]), r3 = t3.convertUtf8OffsetToUtf16(a2[f2++]);
+              c2[n4] = { start: e3, end: r3, length: r3 - e3 };
+            }
+            return { index: s2, captureIndices: c2 };
+          }
         }
-        onLiteralValue(value);
-        break;
-      case 7:
-        onLiteralValue(null);
-        break;
-      case 8:
-        onLiteralValue(true);
-        break;
-      case 9:
-        onLiteralValue(false);
-        break;
-      default:
-        return false;
-    }
-    scanNext();
-    return true;
-  }
-  function parseProperty() {
-    if (_scanner.getToken() !== 10) {
-      handleError(3, [], [2, 5]);
-      return false;
-    }
-    parseString(false);
-    if (_scanner.getToken() === 6) {
-      onSeparator(":");
-      scanNext();
-      if (!parseValue()) {
-        handleError(4, [], [2, 5]);
-      }
-    } else {
-      handleError(5, [], [2, 5]);
-    }
-    _jsonPath.pop();
-    return true;
-  }
-  function parseObject() {
-    onObjectBegin();
-    scanNext();
-    let needsComma = false;
-    while (_scanner.getToken() !== 2 && _scanner.getToken() !== 17) {
-      if (_scanner.getToken() === 5) {
-        if (!needsComma) {
-          handleError(4, [], []);
-        }
-        onSeparator(",");
-        scanNext();
-        if (_scanner.getToken() === 2 && allowTrailingComma) {
-          break;
-        }
-      } else if (needsComma) {
-        handleError(6, [], []);
-      }
-      if (!parseProperty()) {
-        handleError(4, [], [2, 5]);
-      }
-      needsComma = true;
-    }
-    onObjectEnd();
-    if (_scanner.getToken() !== 2) {
-      handleError(7, [2], []);
-    } else {
-      scanNext();
-    }
-    return true;
-  }
-  function parseArray() {
-    onArrayBegin();
-    scanNext();
-    let isFirstElement = true;
-    let needsComma = false;
-    while (_scanner.getToken() !== 4 && _scanner.getToken() !== 17) {
-      if (_scanner.getToken() === 5) {
-        if (!needsComma) {
-          handleError(4, [], []);
-        }
-        onSeparator(",");
-        scanNext();
-        if (_scanner.getToken() === 4 && allowTrailingComma) {
-          break;
-        }
-      } else if (needsComma) {
-        handleError(6, [], []);
-      }
-      if (isFirstElement) {
-        _jsonPath.push(0);
-        isFirstElement = false;
-      } else {
-        _jsonPath[_jsonPath.length - 1]++;
-      }
-      if (!parseValue()) {
-        handleError(4, [], [4, 5]);
-      }
-      needsComma = true;
-    }
-    onArrayEnd();
-    if (!isFirstElement) {
-      _jsonPath.pop();
-    }
-    if (_scanner.getToken() !== 4) {
-      handleError(8, [4], []);
-    } else {
-      scanNext();
-    }
-    return true;
-  }
-  function parseValue() {
-    switch (_scanner.getToken()) {
-      case 3:
-        return parseArray();
-      case 1:
-        return parseObject();
-      case 10:
-        return parseString(true);
-      default:
-        return parseLiteral();
-    }
-  }
-  scanNext();
-  if (_scanner.getToken() === 17) {
-    if (options.allowEmptyContent) {
-      return true;
-    }
-    handleError(4, [], []);
-    return false;
-  }
-  if (!parseValue()) {
-    handleError(4, [], []);
-    return false;
-  }
-  if (_scanner.getToken() !== 17) {
-    handleError(9, [], []);
-  }
-  return true;
-}
-var ScanError;
-(function(ScanError2) {
-  ScanError2[ScanError2["None"] = 0] = "None";
-  ScanError2[ScanError2["UnexpectedEndOfComment"] = 1] = "UnexpectedEndOfComment";
-  ScanError2[ScanError2["UnexpectedEndOfString"] = 2] = "UnexpectedEndOfString";
-  ScanError2[ScanError2["UnexpectedEndOfNumber"] = 3] = "UnexpectedEndOfNumber";
-  ScanError2[ScanError2["InvalidUnicode"] = 4] = "InvalidUnicode";
-  ScanError2[ScanError2["InvalidEscapeCharacter"] = 5] = "InvalidEscapeCharacter";
-  ScanError2[ScanError2["InvalidCharacter"] = 6] = "InvalidCharacter";
-})(ScanError || (ScanError = {}));
-var SyntaxKind;
-(function(SyntaxKind2) {
-  SyntaxKind2[SyntaxKind2["OpenBraceToken"] = 1] = "OpenBraceToken";
-  SyntaxKind2[SyntaxKind2["CloseBraceToken"] = 2] = "CloseBraceToken";
-  SyntaxKind2[SyntaxKind2["OpenBracketToken"] = 3] = "OpenBracketToken";
-  SyntaxKind2[SyntaxKind2["CloseBracketToken"] = 4] = "CloseBracketToken";
-  SyntaxKind2[SyntaxKind2["CommaToken"] = 5] = "CommaToken";
-  SyntaxKind2[SyntaxKind2["ColonToken"] = 6] = "ColonToken";
-  SyntaxKind2[SyntaxKind2["NullKeyword"] = 7] = "NullKeyword";
-  SyntaxKind2[SyntaxKind2["TrueKeyword"] = 8] = "TrueKeyword";
-  SyntaxKind2[SyntaxKind2["FalseKeyword"] = 9] = "FalseKeyword";
-  SyntaxKind2[SyntaxKind2["StringLiteral"] = 10] = "StringLiteral";
-  SyntaxKind2[SyntaxKind2["NumericLiteral"] = 11] = "NumericLiteral";
-  SyntaxKind2[SyntaxKind2["LineCommentTrivia"] = 12] = "LineCommentTrivia";
-  SyntaxKind2[SyntaxKind2["BlockCommentTrivia"] = 13] = "BlockCommentTrivia";
-  SyntaxKind2[SyntaxKind2["LineBreakTrivia"] = 14] = "LineBreakTrivia";
-  SyntaxKind2[SyntaxKind2["Trivia"] = 15] = "Trivia";
-  SyntaxKind2[SyntaxKind2["Unknown"] = 16] = "Unknown";
-  SyntaxKind2[SyntaxKind2["EOF"] = 17] = "EOF";
-})(SyntaxKind || (SyntaxKind = {}));
-var parse = parse$1;
-var ParseErrorCode;
-(function(ParseErrorCode2) {
-  ParseErrorCode2[ParseErrorCode2["InvalidSymbol"] = 1] = "InvalidSymbol";
-  ParseErrorCode2[ParseErrorCode2["InvalidNumberFormat"] = 2] = "InvalidNumberFormat";
-  ParseErrorCode2[ParseErrorCode2["PropertyNameExpected"] = 3] = "PropertyNameExpected";
-  ParseErrorCode2[ParseErrorCode2["ValueExpected"] = 4] = "ValueExpected";
-  ParseErrorCode2[ParseErrorCode2["ColonExpected"] = 5] = "ColonExpected";
-  ParseErrorCode2[ParseErrorCode2["CommaExpected"] = 6] = "CommaExpected";
-  ParseErrorCode2[ParseErrorCode2["CloseBraceExpected"] = 7] = "CloseBraceExpected";
-  ParseErrorCode2[ParseErrorCode2["CloseBracketExpected"] = 8] = "CloseBracketExpected";
-  ParseErrorCode2[ParseErrorCode2["EndOfFileExpected"] = 9] = "EndOfFileExpected";
-  ParseErrorCode2[ParseErrorCode2["InvalidCommentToken"] = 10] = "InvalidCommentToken";
-  ParseErrorCode2[ParseErrorCode2["UnexpectedEndOfComment"] = 11] = "UnexpectedEndOfComment";
-  ParseErrorCode2[ParseErrorCode2["UnexpectedEndOfString"] = 12] = "UnexpectedEndOfString";
-  ParseErrorCode2[ParseErrorCode2["UnexpectedEndOfNumber"] = 13] = "UnexpectedEndOfNumber";
-  ParseErrorCode2[ParseErrorCode2["InvalidUnicode"] = 14] = "InvalidUnicode";
-  ParseErrorCode2[ParseErrorCode2["InvalidEscapeCharacter"] = 15] = "InvalidEscapeCharacter";
-  ParseErrorCode2[ParseErrorCode2["InvalidCharacter"] = 16] = "InvalidCharacter";
-})(ParseErrorCode || (ParseErrorCode = {}));
-var isWebWorker = typeof self !== "undefined" && typeof self.WorkerGlobalScope !== "undefined";
-var isNode = "process" in globalThis && typeof process !== "undefined" && typeof process.release !== "undefined" && process.release.name === "node";
-var isBrowser = isWebWorker || !isNode;
-var CDN_ROOT = "";
-var WASM = "";
-var WASM_PATH = "dist/";
-var _onigurumaPromise = null;
-async function getOniguruma(wasmPath) {
-  if (!_onigurumaPromise) {
-    let loader;
-    if (isBrowser) {
-      if (typeof WASM === "string") {
-        loader = (0, import_vscode_oniguruma.loadWASM)({
-          data: await fetch(_resolvePath(join(...dirpathparts(wasmPath), "onig.wasm")))
-        });
-      } else {
-        loader = (0, import_vscode_oniguruma.loadWASM)({
-          data: WASM
-        });
-      }
-    } else {
-      const path = require_path();
-      const wasmPath2 = path.join(__require.resolve("vscode-oniguruma"), "../onig.wasm");
-      const fs = require_fs();
-      const wasmBin = fs.readFileSync(wasmPath2).buffer;
-      loader = (0, import_vscode_oniguruma.loadWASM)(wasmBin);
-    }
-    _onigurumaPromise = loader.then(() => {
-      return {
-        createOnigScanner(patterns) {
-          return (0, import_vscode_oniguruma.createOnigScanner)(patterns);
-        },
-        createOnigString(s) {
-          return (0, import_vscode_oniguruma.createOnigString)(s);
-        }
-      };
-    });
-  }
-  return _onigurumaPromise;
-}
-function _resolvePath(filepath) {
-  if (isBrowser) {
-    return `${CDN_ROOT}${filepath}`;
-  } else {
-    const path = require_path();
-    if (path.isAbsolute(filepath)) {
-      return filepath;
-    } else {
-      return path.resolve(__dirname, "..", filepath);
-    }
-  }
-}
-async function _fetchAssets(filepath) {
-  const path = _resolvePath(filepath);
-  if (isBrowser) {
-    return await fetch(path).then((r) => r.text());
-  } else {
-    const fs = require_fs();
-    return await fs.promises.readFile(path, "utf-8");
-  }
-}
-async function _fetchJSONAssets(filepath) {
-  const errors = [];
-  const rawTheme = parse(await _fetchAssets(filepath), errors, {
-    allowTrailingComma: true
-  });
-  if (errors.length) {
-    throw errors[0];
-  }
-  return rawTheme;
-}
-async function fetchTheme(themePath) {
-  let theme = await _fetchJSONAssets(themePath);
-  const shikiTheme = toShikiTheme(theme);
-  if (shikiTheme.include) {
-    const includedTheme = await fetchTheme(join(...dirpathparts(themePath), shikiTheme.include));
-    if (includedTheme.settings) {
-      shikiTheme.settings = includedTheme.settings.concat(shikiTheme.settings);
-    }
-    if (includedTheme.bg && !shikiTheme.bg) {
-      shikiTheme.bg = includedTheme.bg;
-    }
-    if (includedTheme.colors) {
-      shikiTheme.colors = { ...includedTheme.colors, ...shikiTheme.colors };
-    }
-    delete shikiTheme.include;
-  }
-  return shikiTheme;
-}
-async function fetchGrammar(filepath) {
-  return await _fetchJSONAssets(filepath);
-}
-function repairTheme(theme) {
-  if (!theme.settings)
-    theme.settings = [];
-  if (theme.settings[0] && theme.settings[0].settings && !theme.settings[0].scope) {
-    return;
-  }
-  theme.settings.unshift({
-    settings: {
-      foreground: theme.fg,
-      background: theme.bg
-    }
-  });
-}
-function toShikiTheme(rawTheme) {
-  const type = rawTheme.type || "dark";
-  const shikiTheme = {
-    name: rawTheme.name,
-    type,
-    ...rawTheme,
-    ...getThemeDefaultColors(rawTheme)
-  };
-  if (rawTheme.include) {
-    shikiTheme.include = rawTheme.include;
-  }
-  if (rawTheme.tokenColors) {
-    shikiTheme.settings = rawTheme.tokenColors;
-    delete shikiTheme.tokenColors;
-  }
-  repairTheme(shikiTheme);
-  return shikiTheme;
-}
-var VSCODE_FALLBACK_EDITOR_FG = { light: "#333333", dark: "#bbbbbb" };
-var VSCODE_FALLBACK_EDITOR_BG = { light: "#fffffe", dark: "#1e1e1e" };
-function getThemeDefaultColors(theme) {
-  let fg, bg;
-  let settings = theme.settings ? theme.settings : theme.tokenColors;
-  const globalSetting = settings ? settings.find((s) => {
-    return !s.name && !s.scope;
-  }) : void 0;
-  if (globalSetting?.settings?.foreground) {
-    fg = globalSetting.settings.foreground;
-  }
-  if (globalSetting?.settings?.background) {
-    bg = globalSetting.settings.background;
-  }
-  if (!fg && theme?.colors?.["editor.foreground"]) {
-    fg = theme.colors["editor.foreground"];
-  }
-  if (!bg && theme?.colors?.["editor.background"]) {
-    bg = theme.colors["editor.background"];
-  }
-  if (!fg) {
-    fg = theme.type === "light" ? VSCODE_FALLBACK_EDITOR_FG.light : VSCODE_FALLBACK_EDITOR_FG.dark;
-  }
-  if (!bg) {
-    bg = theme.type === "light" ? VSCODE_FALLBACK_EDITOR_BG.light : VSCODE_FALLBACK_EDITOR_BG.dark;
-  }
-  return {
-    fg,
-    bg
-  };
-}
-var Resolver = class {
-  constructor(onigLibPromise, onigLibName) {
-    this.languagesPath = "languages/";
-    this.languageMap = {};
-    this.scopeToLangMap = {};
-    this._onigLibPromise = onigLibPromise;
-    this._onigLibName = onigLibName;
-  }
-  get onigLib() {
-    return this._onigLibPromise;
-  }
-  getOnigLibName() {
-    return this._onigLibName;
-  }
-  getLangRegistration(langIdOrAlias) {
-    return this.languageMap[langIdOrAlias];
-  }
-  async loadGrammar(scopeName) {
-    const lang = this.scopeToLangMap[scopeName];
-    if (!lang) {
-      return null;
-    }
-    if (lang.grammar) {
-      return lang.grammar;
-    }
-    const g = await fetchGrammar(
-      languages.includes(lang) ? `${this.languagesPath}${lang.path}` : lang.path
-    );
-    lang.grammar = g;
-    return g;
-  }
-  addLanguage(l) {
-    this.languageMap[l.id] = l;
-    if (l.aliases) {
-      l.aliases.forEach((a) => {
-        this.languageMap[a] = l;
-      });
-    }
-    this.scopeToLangMap[l.scopeName] = l;
-  }
-};
-function tokenizeWithTheme(theme, colorMap, fileContents, grammar, options) {
-  let lines = fileContents.split(/\r\n|\r|\n/);
-  let ruleStack = import_vscode_textmate.INITIAL;
-  let actual = [];
-  let final = [];
-  for (let i = 0, len = lines.length; i < len; i++) {
-    let line = lines[i];
-    if (line === "") {
-      actual = [];
-      final.push([]);
-      continue;
-    }
-    let resultWithScopes;
-    let tokensWithScopes;
-    let tokensWithScopesIndex;
-    if (options.includeExplanation) {
-      resultWithScopes = grammar.tokenizeLine(line, ruleStack);
-      tokensWithScopes = resultWithScopes.tokens;
-      tokensWithScopesIndex = 0;
-    }
-    let result = grammar.tokenizeLine2(line, ruleStack);
-    let tokensLength = result.tokens.length / 2;
-    for (let j = 0; j < tokensLength; j++) {
-      let startIndex = result.tokens[2 * j];
-      let nextStartIndex = j + 1 < tokensLength ? result.tokens[2 * j + 2] : line.length;
-      if (startIndex === nextStartIndex) {
-        continue;
-      }
-      let metadata = result.tokens[2 * j + 1];
-      let foreground = StackElementMetadata.getForeground(metadata);
-      let foregroundColor = colorMap[foreground];
-      let fontStyle = StackElementMetadata.getFontStyle(metadata);
-      let explanation = [];
-      if (options.includeExplanation) {
-        let offset = 0;
-        while (startIndex + offset < nextStartIndex) {
-          let tokenWithScopes = tokensWithScopes[tokensWithScopesIndex];
-          let tokenWithScopesText = line.substring(
-            tokenWithScopes.startIndex,
-            tokenWithScopes.endIndex
-          );
-          offset += tokenWithScopesText.length;
-          explanation.push({
-            content: tokenWithScopesText,
-            scopes: explainThemeScopes(theme, tokenWithScopes.scopes)
+        n2.OnigScanner = u;
+        let c = false, l = null;
+        n2.loadWASM = function(t3) {
+          if (c)
+            return l;
+          let n3, e2, r2, a2;
+          if (c = true, function(t4) {
+            return "function" == typeof t4.instantiator;
+          }(t3))
+            n3 = t3.instantiator, e2 = t3.print;
+          else {
+            let r3;
+            !function(t4) {
+              return void 0 !== t4.data;
+            }(t3) ? r3 = t3 : (r3 = t3.data, e2 = t3.print), n3 = function(t4) {
+              return "undefined" != typeof Response && t4 instanceof Response;
+            }(r3) ? "function" == typeof WebAssembly.instantiateStreaming ? function(t4) {
+              return (n4) => WebAssembly.instantiateStreaming(t4, n4);
+            }(r3) : function(t4) {
+              return async (n4) => {
+                const e3 = await t4.arrayBuffer();
+                return WebAssembly.instantiate(e3, n4);
+              };
+            }(r3) : function(t4) {
+              return (n4) => WebAssembly.instantiate(t4, n4);
+            }(r3);
+          }
+          return l = new Promise((t4, n4) => {
+            r2 = t4, a2 = n4;
+          }), function(t4, n4, e3, r3) {
+            (0, i.default)({ print: n4, instantiateWasm: (n5, e4) => {
+              if ("undefined" == typeof performance) {
+                const t5 = () => Date.now();
+                n5.env.emscripten_get_now = t5, n5.wasi_snapshot_preview1.emscripten_get_now = t5;
+              }
+              return t4(n5).then((t5) => e4(t5.instance), r3), {};
+            } }).then((t5) => {
+              o = t5, e3();
+            });
+          }(n3, e2, r2, a2), l;
+        }, n2.createOnigString = function(t3) {
+          return new s(t3);
+        }, n2.createOnigScanner = function(t3) {
+          return new u(t3);
+        }, n2.setDefaultDebugCall = function(t3) {
+          a = t3;
+        };
+      }, 418: (t2) => {
+        var n2 = ("undefined" != typeof document && document.currentScript && document.currentScript.src, function(t3) {
+          var n3, e, r = void 0 !== (t3 = t3 || {}) ? t3 : {};
+          r.ready = new Promise(function(t4, r2) {
+            n3 = t4, e = r2;
           });
-          tokensWithScopesIndex++;
-        }
-      }
-      actual.push({
-        content: line.substring(startIndex, nextStartIndex),
-        color: foregroundColor,
-        fontStyle,
-        explanation
-      });
-    }
-    final.push(actual);
-    actual = [];
-    ruleStack = result.ruleStack;
-  }
-  return final;
-}
-function explainThemeScopes(theme, scopes) {
-  let result = [];
-  for (let i = 0, len = scopes.length; i < len; i++) {
-    let parentScopes = scopes.slice(0, i);
-    let scope = scopes[i];
-    result[i] = {
-      scopeName: scope,
-      themeMatches: explainThemeScope(theme, scope, parentScopes)
-    };
-  }
-  return result;
-}
-function matchesOne(selector, scope) {
-  let selectorPrefix = selector + ".";
-  if (selector === scope || scope.substring(0, selectorPrefix.length) === selectorPrefix) {
-    return true;
-  }
-  return false;
-}
-function matches(selector, selectorParentScopes, scope, parentScopes) {
-  if (!matchesOne(selector, scope)) {
-    return false;
-  }
-  let selectorParentIndex = selectorParentScopes.length - 1;
-  let parentIndex = parentScopes.length - 1;
-  while (selectorParentIndex >= 0 && parentIndex >= 0) {
-    if (matchesOne(selectorParentScopes[selectorParentIndex], parentScopes[parentIndex])) {
-      selectorParentIndex--;
-    }
-    parentIndex--;
-  }
-  if (selectorParentIndex === -1) {
-    return true;
-  }
-  return false;
-}
-function explainThemeScope(theme, scope, parentScopes) {
-  let result = [], resultLen = 0;
-  for (let i = 0, len = theme.settings.length; i < len; i++) {
-    let setting = theme.settings[i];
-    let selectors;
-    if (typeof setting.scope === "string") {
-      selectors = setting.scope.split(/,/).map((scope2) => scope2.trim());
-    } else if (Array.isArray(setting.scope)) {
-      selectors = setting.scope;
-    } else {
-      continue;
-    }
-    for (let j = 0, lenJ = selectors.length; j < lenJ; j++) {
-      let rawSelector = selectors[j];
-      let rawSelectorPieces = rawSelector.split(/ /);
-      let selector = rawSelectorPieces[rawSelectorPieces.length - 1];
-      let selectorParentScopes = rawSelectorPieces.slice(0, rawSelectorPieces.length - 1);
-      if (matches(selector, selectorParentScopes, scope, parentScopes)) {
-        result[resultLen++] = setting;
-        j = lenJ;
-      }
-    }
-  }
-  return result;
-}
-var defaultElements = {
-  pre({ className, style, children }) {
-    return `<pre class="${className}" style="${style}">${children}</pre>`;
-  },
-  code({ children }) {
-    return `<code>${children}</code>`;
-  },
-  line({ className, children }) {
-    return `<span class="${className}">${children}</span>`;
-  },
-  token({ style, children }) {
-    return `<span style="${style}">${children}</span>`;
-  }
-};
-function renderToHtml(lines, options = {}) {
-  const bg = options.bg || "#fff";
-  const optionsByLineNumber = groupBy(options.lineOptions ?? [], (option) => option.line);
-  const userElements = options.elements || {};
-  function h(type = "", props = {}, children) {
-    const element = userElements[type] || defaultElements[type];
-    if (element) {
-      children = children.filter(Boolean);
-      return element({
-        ...props,
-        children: type === "code" ? children.join("\n") : children.join("")
-      });
-    }
-    return "";
-  }
-  return h(
-    "pre",
-    { className: "shiki " + (options.themeName || ""), style: `background-color: ${bg}` },
-    [
-      options.langId ? `<div class="language-id">${options.langId}</div>` : "",
-      h(
-        "code",
-        {},
-        lines.map((line, index) => {
-          const lineNumber = index + 1;
-          const lineOptions = optionsByLineNumber.get(lineNumber) ?? [];
-          const lineClasses = getLineClasses(lineOptions).join(" ");
-          return h(
-            "line",
-            {
-              className: lineClasses,
-              lines,
-              line,
-              index
-            },
-            line.map((token, index2) => {
-              const cssDeclarations = [`color: ${token.color || options.fg}`];
-              if (token.fontStyle & FontStyle.Italic) {
-                cssDeclarations.push("font-style: italic");
+          var i, o = Object.assign({}, r), a = [], f = false, s = false, u = true, c = "";
+          function l(t4) {
+            return r.locateFile ? r.locateFile(t4, c) : c + t4;
+          }
+          u && (i = function(t4) {
+            let n4;
+            return "function" == typeof readbuffer ? new Uint8Array(readbuffer(t4)) : (n4 = read(t4, "binary"), m("object" == typeof n4), n4);
+          }, "undefined" != typeof scriptArgs ? a = scriptArgs : void 0 !== arguments && (a = arguments), "undefined" != typeof onig_print && ("undefined" == typeof console && (console = {}), console.log = onig_print, console.warn = console.error = "undefined" != typeof printErr ? printErr : onig_print));
+          var h, p, d = r.print || console.log.bind(console), g = r.printErr || console.warn.bind(console);
+          Object.assign(r, o), o = null, r.arguments && (a = r.arguments), r.thisProgram && r.thisProgram, r.quit && r.quit, r.wasmBinary && (h = r.wasmBinary), r.noExitRuntime, "object" != typeof WebAssembly && k("no native wasm support detected");
+          var _ = false;
+          function m(t4, n4) {
+            t4 || k(n4);
+          }
+          var y, w, S, v = "undefined" != typeof TextDecoder ? new TextDecoder("utf8") : void 0;
+          function A(t4, n4, e2) {
+            for (var r2 = n4 + e2, i2 = n4; t4[i2] && !(i2 >= r2); )
+              ++i2;
+            if (i2 - n4 > 16 && t4.buffer && v)
+              return v.decode(t4.subarray(n4, i2));
+            for (var o2 = ""; n4 < i2; ) {
+              var a2 = t4[n4++];
+              if (128 & a2) {
+                var f2 = 63 & t4[n4++];
+                if (192 != (224 & a2)) {
+                  var s2 = 63 & t4[n4++];
+                  if ((a2 = 224 == (240 & a2) ? (15 & a2) << 12 | f2 << 6 | s2 : (7 & a2) << 18 | f2 << 12 | s2 << 6 | 63 & t4[n4++]) < 65536)
+                    o2 += String.fromCharCode(a2);
+                  else {
+                    var u2 = a2 - 65536;
+                    o2 += String.fromCharCode(55296 | u2 >> 10, 56320 | 1023 & u2);
+                  }
+                } else
+                  o2 += String.fromCharCode((31 & a2) << 6 | f2);
+              } else
+                o2 += String.fromCharCode(a2);
+            }
+            return o2;
+          }
+          function b(t4, n4) {
+            return t4 ? A(w, t4, n4) : "";
+          }
+          function O(t4) {
+            y = t4, r.HEAP8 = new Int8Array(t4), r.HEAP16 = new Int16Array(t4), r.HEAP32 = new Int32Array(t4), r.HEAPU8 = w = new Uint8Array(t4), r.HEAPU16 = new Uint16Array(t4), r.HEAPU32 = S = new Uint32Array(t4), r.HEAPF32 = new Float32Array(t4), r.HEAPF64 = new Float64Array(t4);
+          }
+          r.INITIAL_MEMORY;
+          var U = [], P = [], R = [];
+          function x() {
+            if (r.preRun)
+              for ("function" == typeof r.preRun && (r.preRun = [r.preRun]); r.preRun.length; )
+                M(r.preRun.shift());
+            G(U);
+          }
+          function T() {
+            G(P);
+          }
+          function E() {
+            if (r.postRun)
+              for ("function" == typeof r.postRun && (r.postRun = [r.postRun]); r.postRun.length; )
+                I(r.postRun.shift());
+            G(R);
+          }
+          function M(t4) {
+            U.unshift(t4);
+          }
+          function L(t4) {
+            P.unshift(t4);
+          }
+          function I(t4) {
+            R.unshift(t4);
+          }
+          var W = 0, D = null, C = null;
+          function N(t4) {
+            W++, r.monitorRunDependencies && r.monitorRunDependencies(W);
+          }
+          function j(t4) {
+            if (W--, r.monitorRunDependencies && r.monitorRunDependencies(W), 0 == W && (null !== D && (clearInterval(D), D = null), C)) {
+              var n4 = C;
+              C = null, n4();
+            }
+          }
+          function k(t4) {
+            r.onAbort && r.onAbort(t4), g(t4 = "Aborted(" + t4 + ")"), _ = true, t4 += ". Build with -sASSERTIONS for more info.";
+            var n4 = new WebAssembly.RuntimeError(t4);
+            throw e(n4), n4;
+          }
+          var B, H, F = "data:application/octet-stream;base64,";
+          function V(t4) {
+            return t4.startsWith(F);
+          }
+          function z(t4) {
+            try {
+              if (t4 == B && h)
+                return new Uint8Array(h);
+              if (i)
+                return i(t4);
+              throw "both async and sync fetching of the wasm failed";
+            } catch (t5) {
+              k(t5);
+            }
+          }
+          function q() {
+            return h || !f && !s || "function" != typeof fetch ? Promise.resolve().then(function() {
+              return z(B);
+            }) : fetch(B, { credentials: "same-origin" }).then(function(t4) {
+              if (!t4.ok)
+                throw "failed to load wasm binary file at '" + B + "'";
+              return t4.arrayBuffer();
+            }).catch(function() {
+              return z(B);
+            });
+          }
+          function Y() {
+            var t4 = { env: nt, wasi_snapshot_preview1: nt };
+            function n4(t5, n5) {
+              var e2 = t5.exports;
+              r.asm = e2, O((p = r.asm.memory).buffer), r.asm.__indirect_function_table, L(r.asm.__wasm_call_ctors), j();
+            }
+            function i2(t5) {
+              n4(t5.instance);
+            }
+            function o2(n5) {
+              return q().then(function(n6) {
+                return WebAssembly.instantiate(n6, t4);
+              }).then(function(t5) {
+                return t5;
+              }).then(n5, function(t5) {
+                g("failed to asynchronously prepare wasm: " + t5), k(t5);
+              });
+            }
+            if (N(), r.instantiateWasm)
+              try {
+                return r.instantiateWasm(t4, n4);
+              } catch (t5) {
+                g("Module.instantiateWasm callback failed with error: " + t5), e(t5);
               }
-              if (token.fontStyle & FontStyle.Bold) {
-                cssDeclarations.push("font-weight: bold");
-              }
-              if (token.fontStyle & FontStyle.Underline) {
-                cssDeclarations.push("text-decoration: underline");
-              }
-              return h(
-                "token",
-                {
-                  style: cssDeclarations.join("; "),
-                  tokens: line,
-                  token,
-                  index: index2
-                },
-                [escapeHtml(token.content)]
-              );
-            })
-          );
-        })
-      )
-    ]
-  );
-}
-var htmlEscapes = {
-  "&": "&amp;",
-  "<": "&lt;",
-  ">": "&gt;",
-  '"': "&quot;",
-  "'": "&#39;"
-};
-function escapeHtml(html) {
-  return html.replace(/[&<>"']/g, (chr) => htmlEscapes[chr]);
-}
-function getLineClasses(lineOptions) {
-  const lineClasses = /* @__PURE__ */ new Set(["line"]);
-  for (const lineOption of lineOptions) {
-    for (const lineClass of lineOption.classes ?? []) {
-      lineClasses.add(lineClass);
-    }
-  }
-  return Array.from(lineClasses);
-}
-var Registry = class extends import_vscode_textmate.Registry {
-  constructor(_resolver) {
-    super(_resolver);
-    this._resolver = _resolver;
-    this.themesPath = "themes/";
-    this._resolvedThemes = {};
-    this._resolvedGrammars = {};
-    this._langGraph = /* @__PURE__ */ new Map();
-    this._langMap = languages.reduce((acc, lang) => {
-      acc[lang.id] = lang;
-      return acc;
-    }, {});
-  }
-  getTheme(theme) {
-    if (typeof theme === "string") {
-      return this._resolvedThemes[theme];
-    } else {
-      return theme;
-    }
-  }
-  async loadTheme(theme) {
-    if (typeof theme === "string") {
-      if (!this._resolvedThemes[theme]) {
-        this._resolvedThemes[theme] = await fetchTheme(`${this.themesPath}${theme}.json`);
-      }
-      return this._resolvedThemes[theme];
-    } else {
-      theme = toShikiTheme(theme);
-      if (theme.name) {
-        this._resolvedThemes[theme.name] = theme;
-      }
-      return theme;
-    }
-  }
-  async loadThemes(themes) {
-    return await Promise.all(themes.map((theme) => this.loadTheme(theme)));
-  }
-  getLoadedThemes() {
-    return Object.keys(this._resolvedThemes);
-  }
-  getGrammar(name) {
-    return this._resolvedGrammars[name];
-  }
-  async loadLanguage(lang) {
-    const embeddedLanguages = lang.embeddedLangs?.reduce(async (acc, l, idx) => {
-      if (!this.getLoadedLanguages().includes(l) && this._resolver.getLangRegistration(l)) {
-        await this._resolver.loadGrammar(this._resolver.getLangRegistration(l).scopeName);
-        acc[this._resolver.getLangRegistration(l).scopeName] = idx + 2;
-        return acc;
-      }
-    }, {});
-    const grammarConfig = {
-      embeddedLanguages,
-      balancedBracketSelectors: lang.balancedBracketSelectors || ["*"],
-      unbalancedBracketSelectors: lang.unbalancedBracketSelectors || []
-    };
-    const g = await this.loadGrammarWithConfiguration(lang.scopeName, 1, grammarConfig);
-    this._resolvedGrammars[lang.id] = g;
-    if (lang.aliases) {
-      lang.aliases.forEach((la) => {
-        this._resolvedGrammars[la] = g;
-      });
-    }
-  }
-  async loadLanguages(langs) {
-    for (const lang of langs) {
-      this.resolveEmbeddedLanguages(lang);
-    }
-    const langsGraphArray = Array.from(this._langGraph.values());
-    for (const lang of langsGraphArray) {
-      this._resolver.addLanguage(lang);
-    }
-    for (const lang of langsGraphArray) {
-      await this.loadLanguage(lang);
-    }
-  }
-  getLoadedLanguages() {
-    return Object.keys(this._resolvedGrammars);
-  }
-  resolveEmbeddedLanguages(lang) {
-    if (!this._langGraph.has(lang.id)) {
-      this._langGraph.set(lang.id, lang);
-    }
-    if (lang.embeddedLangs) {
-      for (const embeddedLang of lang.embeddedLangs) {
-        this._langGraph.set(embeddedLang, this._langMap[embeddedLang]);
-      }
-    }
-  }
-};
-function resolveLang(lang) {
-  return typeof lang === "string" ? languages.find((l) => l.id === lang || l.aliases?.includes(lang)) : lang;
-}
-function resolveOptions(options) {
-  let _languages = languages;
-  let _themes = options.themes || [];
-  let _wasmPath = options.paths?.wasm ? options.paths.wasm.endsWith("/") ? options.paths.wasm : options.paths.wasm + "/" : WASM_PATH;
-  if (options.langs) {
-    _languages = options.langs.map(resolveLang);
-  }
-  if (options.theme) {
-    _themes.unshift(options.theme);
-  }
-  if (!_themes.length) {
-    _themes = ["nord"];
-  }
-  return { _languages, _themes, _wasmPath };
-}
-async function getHighlighter(options) {
-  const { _languages, _themes, _wasmPath } = resolveOptions(options);
-  const _resolver = new Resolver(getOniguruma(_wasmPath), "vscode-oniguruma");
-  const _registry = new Registry(_resolver);
-  if (options.paths?.themes) {
-    _registry.themesPath = options.paths.themes.endsWith("/") ? options.paths.themes : options.paths.themes + "/";
-  }
-  if (options.paths?.languages) {
-    _resolver.languagesPath = options.paths.languages.endsWith("/") ? options.paths.languages : options.paths.languages + "/";
-  }
-  const themes = await _registry.loadThemes(_themes);
-  const _defaultTheme = themes[0];
-  let _currentTheme;
-  await _registry.loadLanguages(_languages);
-  let COLOR_REPLACEMENTS = {
-    "#000001": "var(--shiki-color-text)",
-    "#000002": "var(--shiki-color-background)",
-    "#000004": "var(--shiki-token-constant)",
-    "#000005": "var(--shiki-token-string)",
-    "#000006": "var(--shiki-token-comment)",
-    "#000007": "var(--shiki-token-keyword)",
-    "#000008": "var(--shiki-token-parameter)",
-    "#000009": "var(--shiki-token-function)",
-    "#000010": "var(--shiki-token-string-expression)",
-    "#000011": "var(--shiki-token-punctuation)",
-    "#000012": "var(--shiki-token-link)"
-  };
-  function setColorReplacements(map) {
-    COLOR_REPLACEMENTS = map;
-  }
-  function fixCssVariablesTheme(theme, colorMap) {
-    theme.bg = COLOR_REPLACEMENTS[theme.bg] || theme.bg;
-    theme.fg = COLOR_REPLACEMENTS[theme.fg] || theme.fg;
-    colorMap.forEach((val, i) => {
-      colorMap[i] = COLOR_REPLACEMENTS[val] || val;
+            return (h || "function" != typeof WebAssembly.instantiateStreaming || V(B) || "function" != typeof fetch ? o2(i2) : fetch(B, { credentials: "same-origin" }).then(function(n5) {
+              return WebAssembly.instantiateStreaming(n5, t4).then(i2, function(t5) {
+                return g("wasm streaming compile failed: " + t5), g("falling back to ArrayBuffer instantiation"), o2(i2);
+              });
+            })).catch(e), {};
+          }
+          function G(t4) {
+            for (; t4.length > 0; )
+              t4.shift()(r);
+          }
+          function J(t4, n4, e2) {
+            w.copyWithin(t4, n4, n4 + e2);
+          }
+          function K(t4) {
+            try {
+              return p.grow(t4 - y.byteLength + 65535 >>> 16), O(p.buffer), 1;
+            } catch (t5) {
+            }
+          }
+          function Q(t4) {
+            var n4, e2 = w.length, r2 = 2147483648;
+            if ((t4 >>>= 0) > r2)
+              return false;
+            for (var i2 = 1; i2 <= 4; i2 *= 2) {
+              var o2 = e2 * (1 + 0.2 / i2);
+              if (o2 = Math.min(o2, t4 + 100663296), K(Math.min(r2, (n4 = Math.max(t4, o2)) + (65536 - n4 % 65536) % 65536)))
+                return true;
+            }
+            return false;
+          }
+          V(B = "onig.wasm") || (B = l(B)), H = "undefined" != typeof dateNow ? dateNow : () => performance.now();
+          var X = [null, [], []];
+          function Z(t4, n4) {
+            var e2 = X[t4];
+            0 === n4 || 10 === n4 ? ((1 === t4 ? d : g)(A(e2, 0)), e2.length = 0) : e2.push(n4);
+          }
+          function $(t4, n4, e2, r2) {
+            for (var i2 = 0, o2 = 0; o2 < e2; o2++) {
+              var a2 = S[n4 >> 2], f2 = S[n4 + 4 >> 2];
+              n4 += 8;
+              for (var s2 = 0; s2 < f2; s2++)
+                Z(t4, w[a2 + s2]);
+              i2 += f2;
+            }
+            return S[r2 >> 2] = i2, 0;
+          }
+          var tt, nt = { emscripten_get_now: H, emscripten_memcpy_big: J, emscripten_resize_heap: Q, fd_write: $ };
+          function et(t4) {
+            function e2() {
+              tt || (tt = true, r.calledRun = true, _ || (T(), n3(r), r.onRuntimeInitialized && r.onRuntimeInitialized(), E()));
+            }
+            t4 = t4 || a, W > 0 || (x(), W > 0 || (r.setStatus ? (r.setStatus("Running..."), setTimeout(function() {
+              setTimeout(function() {
+                r.setStatus("");
+              }, 1), e2();
+            }, 1)) : e2()));
+          }
+          if (Y(), r.___wasm_call_ctors = function() {
+            return (r.___wasm_call_ctors = r.asm.__wasm_call_ctors).apply(null, arguments);
+          }, r.___errno_location = function() {
+            return (r.___errno_location = r.asm.__errno_location).apply(null, arguments);
+          }, r._omalloc = function() {
+            return (r._omalloc = r.asm.omalloc).apply(null, arguments);
+          }, r._ofree = function() {
+            return (r._ofree = r.asm.ofree).apply(null, arguments);
+          }, r._getLastOnigError = function() {
+            return (r._getLastOnigError = r.asm.getLastOnigError).apply(null, arguments);
+          }, r._createOnigScanner = function() {
+            return (r._createOnigScanner = r.asm.createOnigScanner).apply(null, arguments);
+          }, r._freeOnigScanner = function() {
+            return (r._freeOnigScanner = r.asm.freeOnigScanner).apply(null, arguments);
+          }, r._findNextOnigScannerMatch = function() {
+            return (r._findNextOnigScannerMatch = r.asm.findNextOnigScannerMatch).apply(null, arguments);
+          }, r._findNextOnigScannerMatchDbg = function() {
+            return (r._findNextOnigScannerMatchDbg = r.asm.findNextOnigScannerMatchDbg).apply(null, arguments);
+          }, r.stackSave = function() {
+            return (r.stackSave = r.asm.stackSave).apply(null, arguments);
+          }, r.stackRestore = function() {
+            return (r.stackRestore = r.asm.stackRestore).apply(null, arguments);
+          }, r.stackAlloc = function() {
+            return (r.stackAlloc = r.asm.stackAlloc).apply(null, arguments);
+          }, r.dynCall_jiji = function() {
+            return (r.dynCall_jiji = r.asm.dynCall_jiji).apply(null, arguments);
+          }, r.UTF8ToString = b, C = function t4() {
+            tt || et(), tt || (C = t4);
+          }, r.preInit)
+            for ("function" == typeof r.preInit && (r.preInit = [r.preInit]); r.preInit.length > 0; )
+              r.preInit.pop()();
+          return et(), t3.ready;
+        });
+        t2.exports = n2;
+      } }, n = {}, function e(r) {
+        var i = n[r];
+        if (void 0 !== i)
+          return i.exports;
+        var o = n[r] = { exports: {} };
+        return t[r].call(o.exports, o, o.exports, e), o.exports;
+      }(770);
+      var t, n;
     });
   }
-  function getTheme(theme) {
-    const _theme = theme ? _registry.getTheme(theme) : _defaultTheme;
-    if (!_theme) {
-      throw Error(`No theme registration for ${theme}`);
-    }
-    if (!_currentTheme || _currentTheme.name !== _theme.name) {
-      _registry.setTheme(_theme);
-      _currentTheme = _theme;
-    }
-    const _colorMap = _registry.getColorMap();
-    if (_theme.type === "css") {
-      fixCssVariablesTheme(_theme, _colorMap);
-    }
-    return { _theme, _colorMap };
-  }
-  function getGrammar(lang) {
-    const _grammar = _registry.getGrammar(lang);
-    if (!_grammar) {
-      throw Error(`No language registration for ${lang}`);
-    }
-    return { _grammar };
-  }
-  function codeToThemedTokens(code, lang = "text", theme, options2 = { includeExplanation: true }) {
-    if (isPlaintext(lang)) {
-      const lines = code.split(/\r\n|\r|\n/);
-      return [...lines.map((line) => [{ content: line }])];
-    }
-    const { _grammar } = getGrammar(lang);
-    const { _theme, _colorMap } = getTheme(theme);
-    return tokenizeWithTheme(_theme, _colorMap, code, _grammar, options2);
-  }
-  function codeToHtml(code, arg1 = "text", arg2) {
-    let options2;
-    if (typeof arg1 === "object") {
-      options2 = arg1;
-    } else {
-      options2 = {
-        lang: arg1,
-        theme: arg2
-      };
-    }
-    const tokens = codeToThemedTokens(code, options2.lang, options2.theme, {
-      includeExplanation: false
-    });
-    const { _theme } = getTheme(options2.theme);
-    return renderToHtml(tokens, {
-      fg: _theme.fg,
-      bg: _theme.bg,
-      lineOptions: options2?.lineOptions,
-      themeName: _theme.name
-    });
-  }
-  async function loadTheme(theme) {
-    await _registry.loadTheme(theme);
-  }
-  async function loadLanguage(lang) {
-    const _lang = resolveLang(lang);
-    _resolver.addLanguage(_lang);
-    await _registry.loadLanguage(_lang);
-  }
-  function getLoadedThemes() {
-    return _registry.getLoadedThemes();
-  }
-  function getLoadedLanguages() {
-    return _registry.getLoadedLanguages();
-  }
-  function getBackgroundColor(theme) {
-    const { _theme } = getTheme(theme);
-    return _theme.bg;
-  }
-  function getForegroundColor(theme) {
-    const { _theme } = getTheme(theme);
-    return _theme.fg;
-  }
+});
+
+// src/lineNumbers.ts
+var import_vscode_textmate = __toESM(require_main(), 1);
+var import_vscode_oniguruma = __toESM(require_main2(), 1);
+
+// node_modules/vscode-oniguruma/release/onig.wasm
+var onig_default = "./onig-EXOS432P.wasm";
+
+// src/lineNumbers.ts
+var vscodeOnigurumaLib = import_vscode_oniguruma.default.loadWASM(onig_default).then(() => {
   return {
-    codeToThemedTokens,
-    codeToHtml,
-    getTheme: (theme) => {
-      return getTheme(theme)._theme;
+    createOnigScanner(patterns) {
+      return new import_vscode_oniguruma.default.OnigScanner(patterns);
     },
-    loadTheme,
-    loadLanguage,
-    getBackgroundColor,
-    getForegroundColor,
-    getLoadedThemes,
-    getLoadedLanguages,
-    setColorReplacements
+    createOnigString(s) {
+      return new import_vscode_oniguruma.default.OnigString(s);
+    }
   };
-}
-function isPlaintext(lang) {
-  return !lang || ["plaintext", "txt", "text"].includes(lang);
-}
-
-// src/formatter.ts
-var format = async (content, language) => {
-  const highlighter = await getHighlighter({});
-  return highlighter.codeToHtml(content, { lang: language });
-};
-
-// src/generator.ts
-var generateHtmls = async (codeSample) => {
-  let html = "";
-  for (const sampleKey in codeSample.samples) {
-    const sample = codeSample.samples[sampleKey];
-    const sampleHtml = await generateSampleHtml(sample);
-    html += `<div class="cs-sample" cs-id="${sampleKey}">${sampleHtml}</div>`;
+});
+var registry = new import_vscode_textmate.default.Registry({
+  onigLib: vscodeOnigurumaLib,
+  loadGrammar: (scopeName) => {
+    if (scopeName === "source.js") {
+      return fetch("https://raw.githubusercontent.com/textmate/javascript.tmbundle/master/Syntaxes/JavaScript.plist").then((response) => response.text()).then((content) => import_vscode_textmate.default.parseRawGrammar(content));
+    }
+    console.log(`Unknown scope name: ${scopeName}`);
+    return Promise.resolve(null);
   }
-  html = `<div class="cs-wrapper">${html}</div>`;
-  return html;
-};
-var generateSampleHtml = async (sample) => {
-  return format(sample.content, sample.language);
-};
-
-// src/index.ts
-var CodeSample = class {
-  constructor(options) {
-    this.theme = options.theme || "nord";
-    this.samples = options.samples || {};
+});
+registry.loadGrammar("source.js").then((grammar) => {
+  if (!grammar)
+    return;
+  const text = [
+    `function sayHello(name) {`,
+    `	return "Hello, " + name;`,
+    `}`
+  ];
+  let ruleStack = import_vscode_textmate.default.INITIAL;
+  for (let i = 0; i < text.length; i++) {
+    const line = text[i];
+    const lineTokens = grammar.tokenizeLine(line, ruleStack);
+    console.log(`
+Tokenizing line: ${line}`);
+    for (let j = 0; j < lineTokens.tokens.length; j++) {
+      const token = lineTokens.tokens[j];
+      console.log(
+        ` - token from ${token.startIndex} to ${token.endIndex} (${line.substring(token.startIndex, token.endIndex)}) with scopes ${token.scopes.join(", ")}`
+      );
+    }
+    ruleStack = lineTokens.ruleStack;
   }
-  async attachToElement(selector) {
-    const $element = document.querySelector(selector);
-    if (!$element)
-      throw new Error(`selector ${selector} is not in the DOM`);
-    $element.innerHTML = await this.getHtml();
-  }
-  async getHtml() {
-    return generateHtmls(this);
-  }
-  addSample(sampleKey, options) {
-    if (this.samples[sampleKey])
-      throw new Error(`Key [${sampleKey}] already existing`);
-    if (!options.language)
-      throw new Error("Language not defined");
-    if (!options.content)
-      throw new Error("Content not defined");
-    this.samples[sampleKey] = options;
-  }
-  removeSample(sampleKey) {
-    if (!this.samples[sampleKey])
-      throw new Error(`Key [${sampleKey}] not existing`);
-    delete this.samples[sampleKey];
-  }
-  highlightBlock(sampleKey, location) {
-    return Promise.resolve();
-  }
-  goToBlock(sampleKey, location) {
-    return Promise.resolve();
-  }
-  navigateToSample(sampleKey) {
-    return Promise.resolve();
-  }
-};
-export {
-  CodeSample
-};
+});

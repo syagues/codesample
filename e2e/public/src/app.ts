@@ -1,4 +1,4 @@
-import { CodeSample } from './../../../src/index'
+/* import { CodeSample } from './../../../src/index'
 
 const codeSample = new CodeSample({
   theme: 'nord',
@@ -20,4 +20,8 @@ for (const item of array) {
 
 console.log(codeSample);
 
-codeSample.attachToElement('.code-sample')
+codeSample.attachToElement('.code-sample') */
+
+import execute from './../../../dist/dist.esm.js'
+
+execute(document.querySelector('.my-code-sample'))
