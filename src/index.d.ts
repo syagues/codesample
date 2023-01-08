@@ -1,11 +1,11 @@
 declare type sample = {
-  fileName?: string,  
-  language: string,
+  fileName?: string
+  language: string
   content: string
 }
 
 declare type samples = {
-  [key: string]: sample;
+  [key: string]: sample
 }
 
 declare interface CodeSample {
