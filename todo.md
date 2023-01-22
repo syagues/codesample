@@ -71,10 +71,10 @@ This method will navigate to the sample sent.
 
 Things to do:
 
+- [x] Move the compilation to vite
 - [ ] Fill up all the methods
-- [ ] Different files management
+- [ ] Setup CI with github actions
 - [ ] Improve the styles with more usecases
-- [ ] Move the compilation to vite
 - [ ] Try different languages
 - [ ] Workaround usage with different themes
 - [ ] Make e2e usecase with client/server usage
