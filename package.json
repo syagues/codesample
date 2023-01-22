@@ -5,6 +5,7 @@
   "main": "./src/index.ts",
   "exports": "./dist/dist.js",
   "type": "module",
+  "typings": "src/index.d.ts",
   "scripts": {
     "build": "esbuild src/index.ts --bundle --format=esm --outdir=dist --sourcemap --loader:.wasm=binary --loader:.css=text",
     "test": "vitest test",
@@ -23,6 +24,7 @@
   },
   "homepage": "https://github.com/syagues/codesample#readme",
   "devDependencies": {
+    "@rollup/plugin-wasm": "^6.1.2",
     "@vitest/coverage-c8": "0.26.3",
     "esbuild": "0.16.12",
     "http-server": "14.1.1",
@@ -31,7 +33,6 @@
     "vitest": "0.26.3"
   },
   "dependencies": {
-    "vscode-oniguruma": "1.7.0",
-    "vscode-textmate": "8.0.0"
+    "highlight.js": "^11.7.0"
   }
 }

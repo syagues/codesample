@@ -11,7 +11,7 @@ export const generateCodeSamples = async (
     $sample.classList.add('sample')
     $sample.classList.add(sampleKey)
     const sample = samples[sampleKey]
-    await format($sample, sample.content, sample.language)
+    format($sample, sample.content, sample.language)
     $wrapper.appendChild($sample)
   }
   $element.appendChild($wrapper)

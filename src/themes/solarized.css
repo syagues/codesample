@@ -29,44 +29,59 @@
   --cs-line-number-margin-left: 10px;
 }
 
-.cs .sample {
+pre {
+  display: flex;
   background-color: var(--cs-b02-color);
-  padding: 5px 0;
+  padding: 10px;
   border-radius: 5px;
 }
 
-.cs .sample .line {
-  padding: 2px 0;
+pre code {
+  color: var(--cs-b3-color);
 }
 
-.cs .sample .line .line-number {
+pre code .line {
+  padding: 2px 0;
+}
+pre code .line-number {
   display: inline-flex;
   flex-direction: row;
   justify-content: center;
   color: var(--cs-b1-color);
   width: var(--cs-line-number-width);
-  border-right: var(--cs-line-number-border) solid var(--cs-line-number-border-color);
+  border-right: var(--cs-line-number-border) solid
+    var(--cs-line-number-border-color);
   margin-right: var(--cs-line-number-margin-right);
   margin-left: var(--cs-line-number-margin-left);
 }
 
-.cs .sample .token {
-  color: var(--cs-b2-color);
-}
-.cs .sample .comment {
+pre code .hljs-comment {
   color: var(--cs-b1-color);
 }
-.cs .sample .storage,
-.cs .sample .keyword,
-.cs .sample .function-call {
-  color: var(--cs-blue-color);
+
+pre code .hljs-attr,
+pre code .hljs-built_in {
+  color: var(--cs-violet-color);
+  font-weight: 500;
 }
-.cs .sample .assignment {
+pre code .hljs-storage,
+pre code .hljs-keyword,
+pre code .hljs-title {
+  color: var(--cs-blue-color);
+  font-weight: 500;
+}
+pre code .hljs-assignment {
   color: var(--cs-b2-color);
 }
-.cs .sample .string {
+pre code .hljs-string {
+  color: var(--cs-green-color);
+}
+pre code .hljs-subst {
   color: var(--cs-cyan-color);
 }
-.cs .sample .constant {
+pre code .hljs-variable {
   color: var(--cs-yellow-color);
+}
+pre code .hljs-number {
+  color: var(--cs-orange-color);
 }
