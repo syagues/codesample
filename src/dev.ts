@@ -1,4 +1,4 @@
-import { CodeSample } from './../../../dist/index.js'
+import { CodeSample } from './index'
 
 const codeSample = new CodeSample({
   theme: 'nord',
@@ -43,4 +43,4 @@ app.listen(4242, () => console.log('Running on port 4242'));
 
 console.log(codeSample)
 
-codeSample.attachToElement('.my-code-sample')
+codeSample.attachToElement('#app')

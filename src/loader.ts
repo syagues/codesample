@@ -1,4 +1,4 @@
-import defTheme from './themes/solarized.css'
+import defTheme from './themes/solarized.css?inline'
 
 export const loadTheme = (theme: string) => {
   if (theme === 'nord') {
