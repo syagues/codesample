@@ -5,5 +5,6 @@ export default defineConfig({
   plugins: [ wasm() ],
   test: {
     exclude: [...configDefaults.exclude],
+    environment: 'jsdom'
   }
 })
