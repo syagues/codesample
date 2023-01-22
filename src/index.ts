@@ -5,7 +5,7 @@ export class CodeSample {
   theme: string
   samples: samples
 
-  constructor(options) {
+  constructor(options: { theme?: string; samples?: samples }) {
     this.theme = options.theme || 'nord'
     this.samples = options.samples || {}
 

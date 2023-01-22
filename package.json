@@ -5,7 +5,7 @@
   "main": "./src/index.ts",
   "exports": "./dist/dist.js",
   "type": "module",
-  "typings": "src/index.d.ts",
+  "typings": "./index.d.ts",
   "scripts": {
     "dev": "vite",
     "build": "esbuild src/index.ts --bundle --format=esm --outdir=dist --sourcemap --loader:.wasm=binary --loader:.css=text",
