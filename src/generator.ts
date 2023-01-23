@@ -1,5 +1,11 @@
 import ContentParser from './format/ContentParser'
 
+/**
+ * Generates the code samples with DOM manipulation
+ * 
+ * @param $element 
+ * @param samples 
+ */
 export const generateDomCodeSamples = (
   $element: Element,
   samples: samples
@@ -18,6 +24,12 @@ export const generateDomCodeSamples = (
   $element.appendChild($wrapper)
 }
 
+/**
+ * Generates the code samples with no DOM manipulation
+ * 
+ * @param samples 
+ * @returns String
+ */
 export const generateHtmlCodeSamples = (
   samples: samples
 ) => {

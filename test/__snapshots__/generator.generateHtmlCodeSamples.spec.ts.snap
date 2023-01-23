@@ -1,0 +1,7 @@
+// Vitest Snapshot v1
+
+exports[`generateDomCodeSamples :: generate sample HTML 1`] = `
+"<div class=\\"cs\\"><div class=\\"sample sample\\">
+      <pre><code><div class=\\"line\\"><span class=\\"line-number\\">1</span></span><span class=\\"hljs-comment\\">// This is a comment</span></div><div class=\\"line\\"><span class=\\"line-number\\">2</span></span><span class=\\"hljs-keyword\\">const</span> foo = <span class=\\"hljs-string\\">&#x27;bar&#x27;</span>;</div><div class=\\"line\\"><span class=\\"line-number\\">3</span></span><span class=\\"hljs-keyword\\">for</span> (<span class=\\"hljs-keyword\\">const</span> item <span class=\\"hljs-keyword\\">of</span> array) {</div><div class=\\"line\\"><span class=\\"line-number\\">4</span></span>  <span class=\\"hljs-variable language_\\">console</span>.<span class=\\"hljs-title function_\\">log</span>(item);</div><div class=\\"line\\"><span class=\\"line-number\\">5</span></span>}</div></code></pre>
+    </div></div>"
+`;
