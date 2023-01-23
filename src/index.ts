@@ -1,4 +1,4 @@
-import { generateDomCodeSamples, generateHtmlCodeSamples } from './generator'
+import { generateCodeSamples } from './generator'
 import { loadTheme } from './loader'
 
 export class CodeSample {
@@ -21,7 +21,7 @@ export class CodeSample {
     const $element: Element | null = document.querySelector(selector)
     if (!$element) throw new Error(`selector ${selector} is not in the DOM`)
 
-    generateDomCodeSamples($element, this.samples)
+    generateCodeSamples(this.samples, $element)
   }
 
   /**
@@ -29,7 +29,7 @@ export class CodeSample {
    * @returns String
    */
   getHtml() {
-    return generateHtmlCodeSamples(this.samples)
+    return generateCodeSamples(this.samples)
   }
 
   /**

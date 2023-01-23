@@ -29,11 +29,34 @@
   --cs-line-number-margin-left: 10px;
 }
 
+.cs {
+  background-color: var(--cs-b02-color);
+  padding: 10px 5px;
+  border-radius: 5px;
+}
+
+/* Navigation */
+.cs .navigation {
+  padding: 10px 15px 2px;
+}
+.cs .navigation .navigation__sample {
+  display: inline-flex;
+  padding: 5px;
+  background-color: var(--cs-b01-color);
+  border-radius: 5px;
+  cursor: pointer;
+}
+.cs .navigation .navigation__sample:hover {
+  background-color: var(--cs-b00-color);
+}
+.cs .navigation .navigation__sample span {
+  color: var(--cs-b2-color);
+  font-family: monospace;
+}
+
+/* Code */
 pre {
   display: flex;
-  background-color: var(--cs-b02-color);
-  padding: 10px;
-  border-radius: 5px;
 }
 
 pre code {

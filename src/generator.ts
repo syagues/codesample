@@ -1,49 +1,6 @@
-import ContentParser from './format/ContentParser'
+import Widget from './widget/Widget'
 
-/**
- * Generates the code samples with DOM manipulation
- * 
- * @param $element 
- * @param samples 
- */
-export const generateDomCodeSamples = (
-  $element: Element,
-  samples: samples
-) => {
-  const $wrapper = document.createElement('div')
-  $wrapper.classList.add('cs')
-  for (const sampleKey in samples) {
-    const $sample: Element = document.createElement('div')
-    $sample.classList.add('sample')
-    $sample.classList.add(sampleKey)
-    const sample = samples[sampleKey]
-    const contentParser = new ContentParser($sample)
-    contentParser.format(sample.content, sample.language)
-    $wrapper.appendChild($sample)
-  }
-  $element.appendChild($wrapper)
-}
-
-/**
- * Generates the code samples with no DOM manipulation
- * 
- * @param samples 
- * @returns String
- */
-export const generateHtmlCodeSamples = (
-  samples: samples
-) => {
-  let html = `<div class="cs">`
-  for (const sampleKey in samples) {
-    const sample = samples[sampleKey]
-    const contentParser = new ContentParser()
-    const sampleHtml = `<div class="sample ${sampleKey}">
-      ${contentParser.format(sample.content, sample.language)}
-    </div>`
-    html += sampleHtml
-  }
-  
-  html += `</div>`
-
-  return html
+export const generateCodeSamples = (samples: samples, $element?: Element) => {
+  const widget = new Widget($element)
+  return widget.generateWidget(samples)
 }

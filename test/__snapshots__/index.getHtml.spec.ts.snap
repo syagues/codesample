@@ -1,7 +1,3 @@
 // Vitest Snapshot v1
 
-exports[`getHtml :: get 1 sample html 1`] = `
-"<div class=\\"cs\\"><div class=\\"sample sample\\">
-      <pre><code><div class=\\"line\\"><span class=\\"line-number\\">1</span></span><span class=\\"hljs-keyword\\">const</span> foo = <span class=\\"hljs-string\\">&#x27;bar&#x27;</span></div></code></pre>
-    </div></div>"
-`;
+exports[`getHtml :: get 1 sample html 1`] = `"<div class=\\"cs\\"><div class=\\"navigation\\"><div class=\\"navigation__sample sample\\"><span>sample.js</span></div></div><div class=\\"samples\\"><div class=\\"sample sample\\"><pre><code><div class=\\"line\\"><span class=\\"line-number\\">1</span></span><span class=\\"hljs-keyword\\">const</span> foo = <span class=\\"hljs-string\\">&#x27;bar&#x27;</span></div></code></pre></div></div></div>"`;
