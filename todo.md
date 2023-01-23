@@ -72,7 +72,8 @@ This method will navigate to the sample sent.
 Things to do:
 
 - [x] getHtml method
-- [ ] Samples navigation
+- [x] Samples navigation
+- [ ] Navigation + active states and interactivity
 - [ ] Fill other methods (Client side only most of them).
 - [ ] Unit test everything 😊
 - [ ] Setup CI with github actions 🌞🌴
