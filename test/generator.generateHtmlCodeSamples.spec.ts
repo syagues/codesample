@@ -1,9 +1,9 @@
 import { expect, test } from 'vitest'
 import { CodeSample } from '../src/index'
-import { generateCodeSamples } from '../src/generator'
+import { generateHtmlCodeSamples } from '../src/generator'
 import jsContent from './samplesContent/javascript'
 
-test('generateHtml :: generate sample HTML', async () => {
+test('generateDomCodeSamples :: generate sample HTML', async () => {
   const options = {
     theme: 'nord',
     samples: {
@@ -16,9 +16,8 @@ test('generateHtml :: generate sample HTML', async () => {
     }
   }
   
-  const $element = document.createElement('div')
   const codeSample = new CodeSample(options)
-  generateCodeSamples($element, codeSample.samples)
+  const html = generateHtmlCodeSamples(codeSample.samples)
   
-  expect($element).toMatchSnapshot()
+  expect(html).toMatchSnapshot()
 })

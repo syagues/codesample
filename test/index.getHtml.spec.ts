@@ -15,4 +15,6 @@ test('getHtml :: get 1 sample html', () => {
   }
   
   const codeSample = new CodeSample(options)
+  const html = codeSample.getHtml()
+  expect(html).toMatchSnapshot()
 })

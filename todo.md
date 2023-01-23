@@ -71,11 +71,13 @@ This method will navigate to the sample sent.
 
 Things to do:
 
-- [x] Move the compilation to vite
-- [ ] Fill up all the methods
-- [ ] Setup CI with github actions
-- [ ] Improve the styles with more usecases
+- [ ] getHtml method
+- [ ] Should not expose attachToElement in the Node side
+- [ ] Fill other methods (Client side only most of them).
+- [ ] Unit test everything 😊
+- [ ] Setup CI with github actions 🌞🌴
+- [ ] Fill the styles with all the subclasses and elements
 - [ ] Try different languages
-- [ ] Workaround usage with different themes
+- [ ] Workaround usage with different themes (should be loaded async)
+- [ ] Color configuration? Everything with vars (why not?)
 - [ ] Make e2e usecase with client/server usage
-- [ ] Download the oniguruma library and try to compile it separately

@@ -1,11 +1,11 @@
-import { generateCodeSamples } from './generator'
+import { generateDomCodeSamples, generateHtmlCodeSamples } from './generator'
 import { loadTheme } from './loader'
 
 export class CodeSample {
   theme: string
   samples: samples
 
-  constructor(options) {
+  constructor(options: { theme?: string; samples?: samples }) {
     this.theme = options.theme || 'nord'
     this.samples = options.samples || {}
 
@@ -21,15 +21,15 @@ export class CodeSample {
     const $element: Element | null = document.querySelector(selector)
     if (!$element) throw new Error(`selector ${selector} is not in the DOM`)
 
-    await generateCodeSamples($element, this.samples)
+    generateDomCodeSamples($element, this.samples)
   }
 
   /**
    * Gets the generated CodeSample as a String
    * @returns String
    */
-  async getHtml() {
-    return ''
+  getHtml() {
+    return generateHtmlCodeSamples(this.samples)
   }
 
   /**
