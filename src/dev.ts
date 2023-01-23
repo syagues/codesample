@@ -44,3 +44,5 @@ app.listen(4242, () => console.log('Running on port 4242'));
 console.log(codeSample)
 
 codeSample.attachToElement('#app')
+
+console.log(codeSample.getHtml());
