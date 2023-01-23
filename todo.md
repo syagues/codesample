@@ -71,13 +71,15 @@ This method will navigate to the sample sent.
 
 Things to do:
 
-- [ ] getHtml method
-- [ ] Should not expose attachToElement in the Node side
+- [x] getHtml method
+- [ ] Samples navigation
 - [ ] Fill other methods (Client side only most of them).
 - [ ] Unit test everything 😊
 - [ ] Setup CI with github actions 🌞🌴
+- [ ] Should not expose attachToElement in the Node side
 - [ ] Fill the styles with all the subclasses and elements
 - [ ] Try different languages
 - [ ] Workaround usage with different themes (should be loaded async)
 - [ ] Color configuration? Everything with vars (why not?)
 - [ ] Make e2e usecase with client/server usage
+- [ ] Content copy button
